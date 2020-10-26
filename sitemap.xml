@@ -3,307 +3,307 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/centos7/</loc>
+    <loc>http://localhost:1313/tags/centos7/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/centos7/</loc>
+    <loc>http://localhost:1313/categories/centos7/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/09/querycommand/</loc>
+    <loc>http://localhost:1313/2020/09/querycommand/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/09/installredis/</loc>
+    <loc>http://localhost:1313/2020/09/installredis/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/09/privoxy/</loc>
+    <loc>http://localhost:1313/2020/09/privoxy/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/beego/</loc>
+    <loc>http://localhost:1313/tags/beego/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/06/beegoinit/</loc>
+    <loc>http://localhost:1313/2020/06/beegoinit/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/go/</loc>
+    <loc>http://localhost:1313/tags/go/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/go/</loc>
+    <loc>http://localhost:1313/categories/go/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/06/strbytesconv/</loc>
+    <loc>http://localhost:1313/2020/06/strbytesconv/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/06/goroutines_and_channels/</loc>
+    <loc>http://localhost:1313/2020/06/goroutines_and_channels/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/06/map/</loc>
+    <loc>http://localhost:1313/2020/06/map/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/docker/</loc>
+    <loc>http://localhost:1313/categories/docker/</loc>
     <lastmod>2020-03-04T19:51:20+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/docker/</loc>
+    <loc>http://localhost:1313/tags/docker/</loc>
     <lastmod>2020-03-04T19:51:20+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/03/test/</loc>
+    <loc>http://localhost:1313/2020/03/test/</loc>
     <lastmod>2020-03-04T19:51:20+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/03/docker-overviews/</loc>
+    <loc>http://localhost:1313/2020/03/docker-overviews/</loc>
     <lastmod>2020-03-04T19:51:20+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/dbn/</loc>
+    <loc>http://localhost:1313/tags/dbn/</loc>
     <lastmod>2020-02-13T13:52:21+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/dbn/</loc>
+    <loc>http://localhost:1313/categories/dbn/</loc>
     <lastmod>2020-02-13T13:52:21+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2020/02/rbm/</loc>
+    <loc>http://localhost:1313/2020/02/rbm/</loc>
     <lastmod>2020-02-13T13:52:21+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2019/12/argparse/</loc>
+    <loc>http://localhost:1313/2019/12/argparse/</loc>
     <lastmod>2019-12-10T20:32:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/psl/</loc>
+    <loc>http://localhost:1313/tags/psl/</loc>
     <lastmod>2019-12-10T20:32:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/python-standard-library/</loc>
+    <loc>http://localhost:1313/categories/python-standard-library/</loc>
     <lastmod>2019-12-10T20:32:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/pytorch/</loc>
+    <loc>http://localhost:1313/tags/pytorch/</loc>
     <lastmod>2019-11-26T16:37:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/pytorch/</loc>
+    <loc>http://localhost:1313/categories/pytorch/</loc>
     <lastmod>2019-11-26T16:37:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2019/11/pytorch_mean/</loc>
+    <loc>http://localhost:1313/2019/11/pytorch_mean/</loc>
     <lastmod>2019-11-26T16:37:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2019/10/asyncio/</loc>
+    <loc>http://localhost:1313/2019/10/asyncio/</loc>
     <lastmod>2019-10-16T11:04:52+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/functions/</loc>
+    <loc>http://localhost:1313/tags/functions/</loc>
     <lastmod>2019-10-13T21:23:13+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2019/10/functools/</loc>
+    <loc>http://localhost:1313/2019/10/functools/</loc>
     <lastmod>2019-10-13T21:23:13+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/collections/</loc>
+    <loc>http://localhost:1313/tags/collections/</loc>
     <lastmod>2019-10-10T18:13:25+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2019/10/collections/</loc>
+    <loc>http://localhost:1313/2019/10/collections/</loc>
     <lastmod>2019-10-10T18:13:25+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/itertor-and-generator/</loc>
+    <loc>http://localhost:1313/tags/itertor-and-generator/</loc>
     <lastmod>2019-10-08T19:34:35+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2019/10/%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/</loc>
+    <loc>http://localhost:1313/2019/10/%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/</loc>
     <lastmod>2019-10-08T19:34:35+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/2019/10/git/</loc>
+    <loc>http://localhost:1313/2019/10/git/</loc>
     <lastmod>2019-10-07T14:21:50+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/git/</loc>
+    <loc>http://localhost:1313/tags/git/</loc>
     <lastmod>2019-10-07T14:21:50+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/git/</loc>
+    <loc>http://localhost:1313/categories/git/</loc>
     <lastmod>2019-10-07T14:21:50+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/tags/github/</loc>
+    <loc>http://localhost:1313/tags/github/</loc>
     <lastmod>2019-10-07T14:21:50+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/categories/github/</loc>
+    <loc>http://localhost:1313/categories/github/</loc>
     <lastmod>2019-10-07T14:21:50+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/1/01/sort/</loc>
+    <loc>http://localhost:1313/1/01/sort/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/nattygui/nattygui.github.io.git/series/</loc>
+    <loc>http://localhost:1313/series/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
