@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        Goroutines和Channels - nattygui的学习记录
+        GMP模型 - nattygui的学习记录
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,33 +20,33 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="Goroutines和Channels 并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上" />
+    <meta name="description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初" />
     <meta name="generator" content="Hugo 0.76.5 with theme pure" />
-    <title>Goroutines和Channels - nattygui的学习记录</title>
+    <title>GMP模型 - nattygui的学习记录</title>
     
     
     <link rel="stylesheet" href="https://nattygui.github.io/css/style.min.c4bc7071f132c964c2116bca53b392933f377e5ca7b7051ed245187c621a2d3e.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="Goroutines和Channels" />
-<meta property="og:description" content="Goroutines和Channels 并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上" />
+    <meta property="og:title" content="GMP模型" />
+<meta property="og:description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nattygui.github.io/2020/06/goroutines_and_channels/" />
-<meta property="article:published_time" content="2020-06-22T07:49:38+08:00" />
-<meta property="article:modified_time" content="2020-06-22T07:49:38+08:00" />
-<meta itemprop="name" content="Goroutines和Channels">
-<meta itemprop="description" content="Goroutines和Channels 并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上">
-<meta itemprop="datePublished" content="2020-06-22T07:49:38+08:00" />
-<meta itemprop="dateModified" content="2020-06-22T07:49:38+08:00" />
-<meta itemprop="wordCount" content="2236">
+<meta property="og:url" content="https://nattygui.github.io/2020/10/gmp/" />
+<meta property="article:published_time" content="2020-10-22T07:49:38+08:00" />
+<meta property="article:modified_time" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="name" content="GMP模型">
+<meta itemprop="description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初">
+<meta itemprop="datePublished" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="dateModified" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="wordCount" content="1294">
 
 
 
 <meta itemprop="keywords" content="go," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Goroutines和Channels"/>
-<meta name="twitter:description" content="Goroutines和Channels 并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上"/>
+<meta name="twitter:title" content="GMP模型"/>
+<meta name="twitter:description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -195,6 +195,16 @@
             <li>
                 <div class="item-inner">
                     <p class="item-title">
+                        <a href="https://nattygui.github.io/2020/10/gmp/" class="title">GMP模型</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-10-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-10-22</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
                         <a href="https://nattygui.github.io/2020/10/reflect/" class="title">reflect</a>
                     </p>
                     <p class="item-date">
@@ -215,27 +225,17 @@
             <li>
                 <div class="item-inner">
                     <p class="item-title">
+                        <a href="https://nattygui.github.io/2020/09/goroutines_and_channels/" class="title">Goroutines和Channels</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-09-28 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-09-28</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
                         <a href="https://nattygui.github.io/2020/09/querycommand/" class="title">centos7 中常用的查询命令</a>
-                    </p>
-                    <p class="item-date">
-                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
-                    </p>
-                </div>
-            </li>
-            <li>
-                <div class="item-inner">
-                    <p class="item-title">
-                        <a href="https://nattygui.github.io/2020/09/installredis/" class="title">Centos7 安装redis</a>
-                    </p>
-                    <p class="item-date">
-                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
-                    </p>
-                </div>
-            </li>
-            <li>
-                <div class="item-inner">
-                    <p class="item-title">
-                        <a href="https://nattygui.github.io/2020/09/privoxy/" class="title">Privoxy</a>
                     </p>
                     <p class="item-date">
                         <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
@@ -266,8 +266,8 @@
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2020/06/goroutines_and_channels/"
-    >Goroutines和Channels</a
+    href="/2020/10/gmp/"
+    >GMP模型</a
   >
 </h1>
 
@@ -275,8 +275,8 @@
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://nattygui.github.io/2020/06/goroutines_and_channels/" class="article-date">
-  <time datetime="2020-06-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-06-22</time>
+<a href="https://nattygui.github.io/2020/10/gmp/" class="article-date">
+  <time datetime="2020-10-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-10-22</time>
 </a>
 </span>
 <span class="article-category">
@@ -288,113 +288,73 @@
     <a class="article-tag-link" href="/tags/go/"> go </a>
   </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/06/goroutines_and_channels/#comments"
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/10/gmp/#comments"
             class="article-comment-link">评论</a></span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <h1 id="goroutines和channels">Goroutines和Channels</h1>
-<p>并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上万的请求。平板电脑和手机app在渲染用户画面同时还会后台执行各种计算任务和网络请求。即使是传统的批处理问题-读取数据，计算，写输出-现在也会用并发来隐藏掉I/O的操作延迟以充分利用现代计算机设备的多个核心。计算机的性能每年都在以非线性的速度增长。</p>
-<p>golang中并发程序可以用俩种手段来实现，本章讲解goroutine和channe，其支持“顺序通信进程”（communicating sequential processes）或被简称为CSP。CSP是一种现代的并发编程模型，在这种编程模型中值会在不同的运行实例（goroutine）中传递，尽管大多数情况下任然是被限制在单一实例中。</p>
-<h2 id="goroutine">Goroutine</h2>
-<h3 id="goroutine和线程">goroutine和线程</h3>
-<p>goroutine和操作系统的线程区别可以忽略不记，俩者的区别实际上只是一个量上的区别，但是量变会引起质变的道理同样适用于goroutine和线程。</p>
-<h4 id="动态栈">动态栈</h4>
-<p>每一个OS线程都有一个固定大小的内存块（一般会是2MB）来做栈，这个栈会用来存储当前正在被调用或挂起（指在调用其它函数时）的函数的内部变量。</p>
-<p>而每一个goroutine会以一个很小的栈开始其生命周期，一般只需要2KB，一个goroutine的栈和操作系统线程一样，会保存其活跃或挂起的函数调用的本地变量。</p>
-<p>但是和OS线程不太一样的是一个goroutine的栈大小并不是固定的，栈的大小会根据需要动态地伸缩。而goroutine栈的最大值有1GB，比传统的固定大小的线程栈要大得多，尽管一般情况下，大多goroutine都不需要这么大得栈。</p>
-<h4 id="goroutine调度">goroutine调度</h4>
-<p>OS线程会被操作系统内核调度，每几毫秒，一个硬件计时器会中断处理器，这会调用一个叫做scheduler的内核函数，这个函数会挂起当前执行的线程并保存内存中它的寄存器内容，并检查线程列表并决定下一次哪个线程可以被运行，并从内存中恢复该线程的寄存器信息，然后恢复执行该线程的现场并开始执行线程。因为操作系统线程是被内核所调度，所以从一个线程恢复执行该线程的现场并开始执行线程。</p>
-<p>因为操作系统线程是被内核所调度，所以从一个线程向另一个“移动”需要完整的上下文切换，也就是说保存一个用户线程的状态到内存，恢复另一个线程到寄存器，然后更新调度器的数据结构。这几步操作很慢，因为其局限性很差需要几次内存访问，并且会增加运行的cpu周期。</p>
-<p>Go的运行时包含了其自己的调度器，这个调度器使用了一些技术手段，比如m：n调度，因为其会在n个操作系统线程上多工调度m个goroutine。Go调度器的工作和内核的调度是相似的，但是这个调度器只会关注单独Go程序中的goroutine。</p>
-<p>和操作系统的线程调度不同的是，go调度器并不是用一个硬件定时器而是被go语言”建筑“本身进行调度的。例如当一个goroutine调用了time.Sleep或者被channel调用或者mutex操作阻塞时，调度器会使其进入休眠并开始执行另一个goroutine直到时机到了再去唤醒第一goroutine。因为这种调度方式不需要进入内核的上下文，所以重新调度一个goroutine比调度一个线程代价要低得多。</p>
-<h2 id="并发版本的hello-world">并发版本的hello world</h2>
-<h3 id="使用-syncmutex-实现">使用 sync.mutex 实现</h3>
-<pre><code class="language-go">func main() {
-    var mu sync.mutex
+      <h1 id="gmp模型">GMP模型</h1>
+<h2 id="含义">含义</h2>
+<p>Goroutine 的并发编程模型基于GMP模型，其中基本含义如下：</p>
+<ul>
+<li>
+<p>G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初始化的栈空间在2k左右，空间会随着需求增长。</p>
+</li>
+<li>
+<p>M: 抽象化代表为内核线程，记录内核线程栈信息，当goroutine调度到线程时，使用该goroutine自己的栈信息。</p>
+</li>
+<li>
+<p>P: 为一个逻辑Processor，代表调度器，负责调度goroutine，维护一个本地goroutine队列，M从P上获得goroutine并执行，同时还负责部分呢内存的管理。</p>
+</li>
+</ul>
+<h2 id="模型">模型</h2>
+<p><img src="../../../images/GMP%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="avater"></p>
+<pre><code>全局队列： 存放等待允许的G。
 
-    mu.Lock()
+P的本地队列： 同全局队列类似，存放的也是等待运行的G，存的数量有限，不超过256个。新建一个G时，G优先加入到P的本地队列，如果队列满了，则会把本地队列中一半的G移动到全局队列
 
-    go func() {
-        fmt.Println(&quot;hello world&quot;)
-        mu.Unlock()
-    }()
+P列表：所有的P都在程序启动时创建，并保存在数组中，最多有GOMAXPROCS个P
 
-    mu.Lock()
-}
+M：线程想运行任务就得获取P，从P的本地队列获取G，P队列为空的时候，M也会尝试从全局队列拿一批G放到P的本地队列，或从其他P的本地队列拿一半放到自己P的本地队列。M运行G，G执行之后，M会从P获取下一个G，不断重复下去。
 </code></pre>
-<p>在第二次执行Lock() 锁时，由于锁已经被占用所以main函数会阻塞，此时main函数的阻塞会驱使goroutine继续，当goroutine执行完毕时，一个锁会打开，第二锁会继续锁住，main函数会继续执行。</p>
-<h3 id="使用无缓冲通道channel-实现">使用无缓冲通道channel 实现</h3>
-<p>使用互斥锁是比较低级的做法，现在使用无缓冲的管道实现。</p>
-<pre><code class="language-go">func main() {
-    done := make(chan int)
-
-    go func() {
-        fmt.Println(&quot;hello world&quot;)
-        &lt;- done  
-    }
-
-    done &lt;- 1
-}
-
-// 调换位置也可以实现
-
-</code></pre>
-<p>上面中，在最后一条语句向done发送一条1，由于done是无缓冲的，所以它会一直等待done接收才会向下执行。</p>
-<p>根据go语言内存模型规范，对于无缓冲Channel进行的接收，发生在对该Channel进行的发送完成之前，因此，后台线程 &lt;-done 接收操作完成之后， main线程的 done &lt;- 1 发送操作才可能完成(从而退出main, 退出程序), 而此时打印工作已经完成了。</p>
-<h3 id="使用有缓存的通道">使用有缓存的通道</h3>
-<p>上面无缓冲的通道虽然可以正常同步，但是对管道的缓存大小敏感，如果管道有缓存的话，就无法保证main退出之前后台线程能正常打印了。</p>
-<p>更好的做法是管道的发送和接收方向调换一下，这样可以避免同步事件受管道缓存大小的影像。</p>
-<pre><code class="language-go">func main() {
-    done := make(chan int, 1)
-
-    go func() {
-        fmt.Println(&quot;hello world&quot;)
-        done &lt;- 1
-    }
-
-    &lt;-done
-}
-</code></pre>
-<p>对于带缓冲的Channel，对于Channel 的第K个接收完成操作发生在第K+C个发送操作完成之前，其中C是Channel的缓存太小，虽然管道是带缓存的，main 线程接收完成是在后台线程发送开始但还未完成的时刻，此时打印工作也是已经完成的。</p>
-<h3 id="n个缓存的通道">N个缓存的通道</h3>
-<p>基于带缓存的管道，我们可以很容易将打印线程扩展到N个。下面的例子是开启10个后台线程分别打印</p>
-<pre><code class="language-go">func main() {
-    done := make(chan int, 10) 
-
-    // 开N个后台打印缓存
-    for i := 0; i &lt; cap(done); i++ {
-        go func() {
-            fmt.Println(&quot;hello world&quot;)
-            done &lt;- 1
-        }()
-    }
-
-    // 等待N 个后台线程完成
-    for i := 0; i &lt; cap(done); i++ {
-        &lt;- done
-    }
-}
-</code></pre>
-<h3 id="使用-syncwaitgroup-来实现">使用 sync.WaitGroup 来实现</h3>
-<pre><code class="language-go">func main() {
-    var wg sync.WaitGroup
-
-    // 开N个后台打印线程
-    for i := 0; i &lt; 10; i++ {
-        wg.Add(1)
-
-        go func() {
-            fmt.Println(&quot;hello world&quot;)
-            wg.Done()
-        }()
-
-        // 等待N个后台线程完成
-        wg.Wait()
-    }
-}
-</code></pre>
-<p>其中 wg.Add(1) 用于增加等待事件的个数，必须确保在后台线程启动之前启动，当后台线程完成打印工作之后，调用 wg.Done() 表示完成一个事件。main 函数的wg.Wait() 是等待全部的事件完成。</p>
+<!-- raw HTML omitted -->
+<p>M表示一个用户态线程，在M上有一个P和G，P是绑定到M上的，M获取G是通过P的调度获取的，在某一时刻，一个M上只有一个G（G0）除外。
+在P上拥有一个G队列，里面是已经就绪的G，是可以被调度到线程栈上执行的协程，称为运行队列。</p>
+<h3 id="p和m的个数问题">P和M的个数问题</h3>
+<p>1、 P的数量</p>
+<p>由启动时环境变量$GOMAXPROCS 或者是由runtime 的方法GOMAXPROCS() 决定。这意味着在程序执行的任意时刻都只有$GOMAXPROCS 个Goroutine 在同时运行。</p>
+<p>2、 M的数量</p>
+<ol>
+<li>
+<p>go语言本身的限制：go程序启动时，会设置M的最大数量，默认为10000。但是内核很难支持这么多的线程数，所以这个限制可以忽略。</p>
+</li>
+<li>
+<p>runtime/debug 中的SetMaxThreads函数，设置M的最大数量</p>
+</li>
+<li>
+<p>一个M阻塞了，会创建新的M</p>
+</li>
+</ol>
+<hr>
+<p>M与P的数量没有绝对关系，一个M阻塞，P就会去创建或者切换另一个M，所以，即使P的默认数量为1，也有可能创建很多个M出来。</p>
+<hr>
+<h3 id="调度器的设计策略">调度器的设计策略</h3>
+<h4 id="复用线程">复用线程</h4>
+<p>避免频繁的创建、销毁线程，而是对线程的复用</p>
+<ol>
+<li>
+<p>work steaking 机制： 当本线程无可运行的G时，尝试从其他线程绑定的P偷取G，而不是销毁线程。</p>
+</li>
+<li>
+<p>hand off 机制：当本线程因为G进行系统调用阻塞时，线程释放绑定的P，把P转移给其他空闲的线程执行。</p>
+</li>
+</ol>
+<h4 id="并行利用">并行利用</h4>
+<p>GOMAXPROCS设置P的数量，最多有GOMAXPROCS个线程分布在多个CPU上同时运行。GOMAXPROCS也限制了并发的程度，比如GOMAXPROCS=核心数/2， 则最多利用一半的CPI核进行并行。</p>
+<h4 id="抢占">抢占</h4>
+<p>在coroutine中要等待一个协程主动让出一个CPU才执行下一个协程，在Go中，一个goroutine最多占用CPU 10ms，防止其他goroutine饿死，这是goroutine 不同于别的coroutine的一个地方。</p>
+<h4 id="全局g队列">全局G队列</h4>
+<p>在最新的go语言中，存在一个全局G队列，但功能被弱化了，当M执行work stealing从其他P偷不到G时，它可以从全局G队列获取G。</p>
 
     </div>
     <div class="article-footer">
@@ -407,14 +367,9 @@
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://nattygui.github.io/2020/06/map/" title="map 介绍"><i
+                <a href="https://nattygui.github.io/2020/10/reflect/" title="reflect"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://nattygui.github.io/2020/06/strbytesconv/"
-                    title="golang实现不分配额外内存[]byte和string转换"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             
             <li class="toggle-toc">

@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://nattygui.github.io/2020/10/gmp/</loc>
+    <lastmod>2020-10-22T07:49:38+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://nattygui.github.io/tags/go/</loc>
     <lastmod>2020-10-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -66,6 +73,13 @@
   </url>
   
   <url>
+    <loc>https://nattygui.github.io/2020/09/goroutines_and_channels/</loc>
+    <lastmod>2020-09-28T07:49:38+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://nattygui.github.io/tags/centos7/</loc>
     <lastmod>2020-09-04T09:27:54+08:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -101,21 +115,7 @@
   </url>
   
   <url>
-    <loc>https://nattygui.github.io/2020/06/gmp/</loc>
-    <lastmod>2020-06-22T07:49:38+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://nattygui.github.io/2020/06/strbytesconv/</loc>
-    <lastmod>2020-06-22T07:49:38+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://nattygui.github.io/2020/06/goroutines_and_channels/</loc>
     <lastmod>2020-06-22T07:49:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

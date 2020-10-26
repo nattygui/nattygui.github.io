@@ -10,6 +10,15 @@
     
     
     <item>
+      <title>GMP模型</title>
+      <link>https://nattygui.github.io/2020/10/gmp/</link>
+      <pubDate>Thu, 22 Oct 2020 07:49:38 +0800</pubDate>
+      
+      <guid>https://nattygui.github.io/2020/10/gmp/</guid>
+      <description>GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初</description>
+    </item>
+    
+    <item>
       <title>reflect</title>
       <link>https://nattygui.github.io/2020/10/reflect/</link>
       <pubDate>Thu, 22 Oct 2020 07:49:38 +0800</pubDate>
@@ -25,6 +34,15 @@
       
       <guid>https://nattygui.github.io/2020/10/typeandvalue/</guid>
       <description>reflect.Type 和 reflect.Value 反射是由reflect包提供支持，它定义了俩个重要的类型，Type和Value。 一个Type表示一个Go类型，它是一个接口。refle</description>
+    </item>
+    
+    <item>
+      <title>Goroutines和Channels</title>
+      <link>https://nattygui.github.io/2020/09/goroutines_and_channels/</link>
+      <pubDate>Mon, 28 Sep 2020 07:49:38 +0800</pubDate>
+      
+      <guid>https://nattygui.github.io/2020/09/goroutines_and_channels/</guid>
+      <description>Goroutines和Channels 并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上</description>
     </item>
     
     <item>
@@ -55,30 +73,12 @@
     </item>
     
     <item>
-      <title>GMP模型</title>
-      <link>https://nattygui.github.io/2020/06/gmp/</link>
-      <pubDate>Mon, 22 Jun 2020 07:49:38 +0800</pubDate>
-      
-      <guid>https://nattygui.github.io/2020/06/gmp/</guid>
-      <description>GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初</description>
-    </item>
-    
-    <item>
       <title>golang实现不分配额外内存[]byte和string转换</title>
       <link>https://nattygui.github.io/2020/06/strbytesconv/</link>
       <pubDate>Mon, 22 Jun 2020 07:49:38 +0800</pubDate>
       
       <guid>https://nattygui.github.io/2020/06/strbytesconv/</guid>
       <description>golang实现不分配额外内存[]byte和string转换 普通的强转 一般在进行[]byte 和string之间进行转换时，通过进行强转实现。</description>
-    </item>
-    
-    <item>
-      <title>Goroutines和Channels</title>
-      <link>https://nattygui.github.io/2020/06/goroutines_and_channels/</link>
-      <pubDate>Mon, 22 Jun 2020 07:49:38 +0800</pubDate>
-      
-      <guid>https://nattygui.github.io/2020/06/goroutines_and_channels/</guid>
-      <description>Goroutines和Channels 并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上</description>
     </item>
     
     <item>
