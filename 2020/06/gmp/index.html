@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        centos7 中常用的查询命令 - nattygui的学习记录
+        GMP模型 - nattygui的学习记录
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,33 +20,33 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12" />
+    <meta name="description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初" />
     <meta name="generator" content="Hugo 0.76.5 with theme pure" />
-    <title>centos7 中常用的查询命令 - nattygui的学习记录</title>
+    <title>GMP模型 - nattygui的学习记录</title>
     
     
     <link rel="stylesheet" href="https://nattygui.github.io/css/style.min.c4bc7071f132c964c2116bca53b392933f377e5ca7b7051ed245187c621a2d3e.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="centos7 中常用的查询命令" />
-<meta property="og:description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12" />
+    <meta property="og:title" content="GMP模型" />
+<meta property="og:description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nattygui.github.io/2020/09/querycommand/" />
-<meta property="article:published_time" content="2020-09-04T09:27:54+08:00" />
-<meta property="article:modified_time" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="name" content="centos7 中常用的查询命令">
-<meta itemprop="description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12">
-<meta itemprop="datePublished" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="dateModified" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="wordCount" content="428">
+<meta property="og:url" content="https://nattygui.github.io/2020/06/gmp/" />
+<meta property="article:published_time" content="2020-06-22T07:49:38+08:00" />
+<meta property="article:modified_time" content="2020-06-22T07:49:38+08:00" />
+<meta itemprop="name" content="GMP模型">
+<meta itemprop="description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初">
+<meta itemprop="datePublished" content="2020-06-22T07:49:38+08:00" />
+<meta itemprop="dateModified" content="2020-06-22T07:49:38+08:00" />
+<meta itemprop="wordCount" content="1294">
 
 
 
-<meta itemprop="keywords" content="centos7," />
+<meta itemprop="keywords" content="go," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="centos7 中常用的查询命令"/>
-<meta name="twitter:description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12"/>
+<meta name="twitter:title" content="GMP模型"/>
+<meta name="twitter:description" content="GMP模型 含义 Goroutine 的并发编程模型基于GMP模型，其中基本含义如下： G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -266,8 +266,8 @@
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2020/09/querycommand/"
-    >centos7 中常用的查询命令</a
+    href="/2020/06/gmp/"
+    >GMP模型</a
   >
 </h1>
 
@@ -275,87 +275,86 @@
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://nattygui.github.io/2020/09/querycommand/" class="article-date">
-  <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+<a href="https://nattygui.github.io/2020/06/gmp/" class="article-date">
+  <time datetime="2020-06-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-06-22</time>
 </a>
 </span>
 <span class="article-category">
   <i class="icon icon-folder"></i>&nbsp;
-  <a class="article-category-link" href="/categories/centos7/"> centos7 </a>
+  <a class="article-category-link" href="/categories/go/"> go </a>
 </span>  
   <span class="article-tag">
     <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/centos7/"> centos7 </a>
+    <a class="article-tag-link" href="/tags/go/"> go </a>
   </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/09/querycommand/#comments"
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/06/gmp/#comments"
             class="article-comment-link">评论</a></span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <h1 id="centos7-中常用的查询命令">centos7 中常用的查询命令</h1>
-<h2 id="ps-显示当前进程信息">ps 显示当前进程信息</h2>
+      <h1 id="gmp模型">GMP模型</h1>
+<h2 id="含义">含义</h2>
+<p>Goroutine 的并发编程模型基于GMP模型，其中基本含义如下：</p>
+<ul>
+<li>
+<p>G: 表示goroutine，每个goroutine都有自己的栈空间，定时器，初始化的栈空间在2k左右，空间会随着需求增长。</p>
+</li>
+<li>
+<p>M: 抽象化代表为内核线程，记录内核线程栈信息，当goroutine调度到线程时，使用该goroutine自己的栈信息。</p>
+</li>
+<li>
+<p>P: 为一个逻辑Processor，代表调度器，负责调度goroutine，维护一个本地goroutine队列，M从P上获得goroutine并执行，同时还负责部分呢内存的管理。</p>
+</li>
+</ul>
+<h2 id="模型">模型</h2>
+<p><img src="../../../images/GMP%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="avater"></p>
+<pre><code>全局队列： 存放等待允许的G。
+
+P的本地队列： 同全局队列类似，存放的也是等待运行的G，存的数量有限，不超过256个。新建一个G时，G优先加入到P的本地队列，如果队列满了，则会把本地队列中一半的G移动到全局队列
+
+P列表：所有的P都在程序启动时创建，并保存在数组中，最多有GOMAXPROCS个P
+
+M：线程想运行任务就得获取P，从P的本地队列获取G，P队列为空的时候，M也会尝试从全局队列拿一批G放到P的本地队列，或从其他P的本地队列拿一半放到自己P的本地队列。M运行G，G执行之后，M会从P获取下一个G，不断重复下去。
+</code></pre>
+<!-- raw HTML omitted -->
+<p>M表示一个用户态线程，在M上有一个P和G，P是绑定到M上的，M获取G是通过P的调度获取的，在某一时刻，一个M上只有一个G（G0）除外。
+在P上拥有一个G队列，里面是已经就绪的G，是可以被调度到线程栈上执行的协程，称为运行队列。</p>
+<h3 id="p和m的个数问题">P和M的个数问题</h3>
+<p>1、 P的数量</p>
+<p>由启动时环境变量$GOMAXPROCS 或者是由runtime 的方法GOMAXPROCS() 决定。这意味着在程序执行的任意时刻都只有$GOMAXPROCS 个Goroutine 在同时运行。</p>
+<p>2、 M的数量</p>
 <ol>
-<li>ps -A 显示所有的进程信息</li>
-</ol>
-<pre><code class="language-bash">PID TTY          TIME CMD
-     1 ?        00:00:08 systemd
-     2 ?        00:00:00 kthreadd
-     4 ?        00:00:00 kworker/0:0H
-     6 ?        00:00:00 ksoftirqd/0
-     7 ?        00:00:00 migration/0
-     8 ?        00:00:00 rcu_bh
-     9 ?        00:00:25 rcu_sched
-    10 ?        00:00:00 lru-add-drain
-    11 ?        00:00:00 watchdog/0
-    12 ?        00:00:01 watchdog/1
-    13 ?        00:00:00 migration/1
-    14 ?        00:00:00 ksoftirqd/1
-    16 ?        00:00:00 kworker/1:0H
-    ......
-</code></pre>
-<ol start="2">
-<li>ps -aux 显示所有包含其他使用者的行程</li>
-</ol>
-<pre><code class="language-bash">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root          1  0.0  0.1 125696  4264 ?        Ss   04:55   0:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
-root          2  0.0  0.0      0     0 ?        S    04:55   0:00 [kthreadd]
-root          4  0.0  0.0      0     0 ?        S&lt;   04:55   0:00 [kworker/0:0H]
-root          6  0.0  0.0      0     0 ?        S    04:55   0:00 [ksoftirqd/0]
-root          7  0.0  0.0      0     0 ?        S    04:55   0:00 [migration/0]
-root          8  0.0  0.0      0     0 ?        S    04:55   0:00 [rcu_bh]
-root          9  0.0  0.0      0     0 ?        S    04:55   0:25 [rcu_sched]
-root         10  0.0  0.0      0     0 ?        S&lt;   04:55   0:00 [lru-add-drain]
-</code></pre>
-<ol start="3">
 <li>
-<p>ps -ef 显示所有进程信息，连同命令行</p>
+<p>go语言本身的限制：go程序启动时，会设置M的最大数量，默认为10000。但是内核很难支持这么多的线程数，所以这个限制可以忽略。</p>
 </li>
 <li>
-<p>ps -u [用户名]  查询指定用户名的所有进程</p>
+<p>runtime/debug 中的SetMaxThreads函数，设置M的最大数量</p>
+</li>
+<li>
+<p>一个M阻塞了，会创建新的M</p>
 </li>
 </ol>
-<h2 id="netstat-查询网络信息">netstat 查询网络信息</h2>
-<p>常用参数：</p>
-<p>-a (all)显示所有选项，默认不显示LISTEN相关</p>
-<p>-t (tcp)仅显示tcp相关选项</p>
-<p>-u (udp)仅显示udp相关选项</p>
-<p>-n 拒绝显示别名，能显示数字的全部转化成数字。</p>
-<p>-l 仅列出有在 Listen (监听) 的服务状态</p>
-<p>-p 显示建立相关链接的程序名</p>
-<h3 id="netstat-查询所有的网络状态">netstat 查询所有的网络状态</h3>
-<pre><code>netstat -a
-</code></pre>
-<h3 id="一般使用的话">一般使用的话</h3>
-<pre><code># 查询相应的处于监听状态的tcp 
-netstat -alnt 
-
-# 查询指定的端口号
-netstat -alnt | grep 8080
-
-# 加上 p 查询到相应的 进程
-netstat -alntp | grep 8080
-</code></pre>
+<hr>
+<p>M与P的数量没有绝对关系，一个M阻塞，P就会去创建或者切换另一个M，所以，即使P的默认数量为1，也有可能创建很多个M出来。</p>
+<hr>
+<h3 id="调度器的设计策略">调度器的设计策略</h3>
+<h4 id="复用线程">复用线程</h4>
+<p>避免频繁的创建、销毁线程，而是对线程的复用</p>
+<ol>
+<li>
+<p>work steaking 机制： 当本线程无可运行的G时，尝试从其他线程绑定的P偷取G，而不是销毁线程。</p>
+</li>
+<li>
+<p>hand off 机制：当本线程因为G进行系统调用阻塞时，线程释放绑定的P，把P转移给其他空闲的线程执行。</p>
+</li>
+</ol>
+<h4 id="并行利用">并行利用</h4>
+<p>GOMAXPROCS设置P的数量，最多有GOMAXPROCS个线程分布在多个CPU上同时运行。GOMAXPROCS也限制了并发的程度，比如GOMAXPROCS=核心数/2， 则最多利用一半的CPI核进行并行。</p>
+<h4 id="抢占">抢占</h4>
+<p>在coroutine中要等待一个协程主动让出一个CPU才执行下一个协程，在Go中，一个goroutine最多占用CPU 10ms，防止其他goroutine饿死，这是goroutine 不同于别的coroutine的一个地方。</p>
+<h4 id="全局g队列">全局G队列</h4>
+<p>在最新的go语言中，存在一个全局G队列，但功能被弱化了，当M执行work stealing从其他P偷不到G时，它可以从全局G队列获取G。</p>
 
     </div>
     <div class="article-footer">
@@ -368,13 +367,13 @@ netstat -alntp | grep 8080
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://nattygui.github.io/2020/09/installredis/" title="Centos7 安装redis"><i
+                <a href="https://nattygui.github.io/2020/06/strbytesconv/" title="golang实现不分配额外内存[]byte和string转换"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
             </li>
             <li class="next">
-                <a href="https://nattygui.github.io/2020/10/typeandvalue/"
-                    title="reflect.Type 和 reflect.Value"><span>上一篇&nbsp;&nbsp;</span><i
+                <a href="https://nattygui.github.io/2020/09/privoxy/"
+                    title="Privoxy"><span>上一篇&nbsp;&nbsp;</span><i
                         class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             

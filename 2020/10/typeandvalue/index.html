@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        centos7 中常用的查询命令 - nattygui的学习记录
+        reflect.Type 和 reflect.Value - nattygui的学习记录
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,33 +20,33 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12" />
+    <meta name="description" content="reflect.Type 和 reflect.Value 反射是由reflect包提供支持，它定义了俩个重要的类型，Type和Value。 一个Type表示一个Go类型，它是一个接口。refle" />
     <meta name="generator" content="Hugo 0.76.5 with theme pure" />
-    <title>centos7 中常用的查询命令 - nattygui的学习记录</title>
+    <title>reflect.Type 和 reflect.Value - nattygui的学习记录</title>
     
     
     <link rel="stylesheet" href="https://nattygui.github.io/css/style.min.c4bc7071f132c964c2116bca53b392933f377e5ca7b7051ed245187c621a2d3e.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="centos7 中常用的查询命令" />
-<meta property="og:description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12" />
+    <meta property="og:title" content="reflect.Type 和 reflect.Value" />
+<meta property="og:description" content="reflect.Type 和 reflect.Value 反射是由reflect包提供支持，它定义了俩个重要的类型，Type和Value。 一个Type表示一个Go类型，它是一个接口。refle" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nattygui.github.io/2020/09/querycommand/" />
-<meta property="article:published_time" content="2020-09-04T09:27:54+08:00" />
-<meta property="article:modified_time" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="name" content="centos7 中常用的查询命令">
-<meta itemprop="description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12">
-<meta itemprop="datePublished" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="dateModified" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="wordCount" content="428">
+<meta property="og:url" content="https://nattygui.github.io/2020/10/typeandvalue/" />
+<meta property="article:published_time" content="2020-10-22T07:49:38+08:00" />
+<meta property="article:modified_time" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="name" content="reflect.Type 和 reflect.Value">
+<meta itemprop="description" content="reflect.Type 和 reflect.Value 反射是由reflect包提供支持，它定义了俩个重要的类型，Type和Value。 一个Type表示一个Go类型，它是一个接口。refle">
+<meta itemprop="datePublished" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="dateModified" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="wordCount" content="2136">
 
 
 
-<meta itemprop="keywords" content="centos7," />
+<meta itemprop="keywords" content="reflect,go," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="centos7 中常用的查询命令"/>
-<meta name="twitter:description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12"/>
+<meta name="twitter:title" content="reflect.Type 和 reflect.Value"/>
+<meta name="twitter:description" content="reflect.Type 和 reflect.Value 反射是由reflect包提供支持，它定义了俩个重要的类型，Type和Value。 一个Type表示一个Go类型，它是一个接口。refle"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -266,8 +266,8 @@
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2020/09/querycommand/"
-    >centos7 中常用的查询命令</a
+    href="/2020/10/typeandvalue/"
+    >reflect.Type 和 reflect.Value</a
   >
 </h1>
 
@@ -275,86 +275,332 @@
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://nattygui.github.io/2020/09/querycommand/" class="article-date">
-  <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+<a href="https://nattygui.github.io/2020/10/typeandvalue/" class="article-date">
+  <time datetime="2020-10-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-10-22</time>
 </a>
 </span>
 <span class="article-category">
   <i class="icon icon-folder"></i>&nbsp;
-  <a class="article-category-link" href="/categories/centos7/"> centos7 </a>
+  <a class="article-category-link" href="/categories/go/"> go </a>
 </span>  
   <span class="article-tag">
     <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/centos7/"> centos7 </a>
+    <a class="article-tag-link" href="/tags/reflect/"> reflect </a>
+    <a class="article-tag-link" href="/tags/go/"> go </a>
   </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/09/querycommand/#comments"
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/10/typeandvalue/#comments"
             class="article-comment-link">评论</a></span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <h1 id="centos7-中常用的查询命令">centos7 中常用的查询命令</h1>
-<h2 id="ps-显示当前进程信息">ps 显示当前进程信息</h2>
+      <h1 id="reflecttype-和-reflectvalue">reflect.Type 和 reflect.Value</h1>
+<p>反射是由reflect包提供支持，它定义了俩个重要的类型，Type和Value。</p>
+<p>一个Type表示一个Go类型，它是一个接口。reflect.Type 可以表示任意类型。</p>
+<p>一个Value表示一个Go值，reflect.Value 可以持有一个任意类型的值，</p>
+<h2 id="reflecttype">reflect.Type</h2>
+<p>函数reflect.TypeOf 接受任意的interface{} 类型，并返回对应动态类型的reflect.Type:</p>
+<pre><code class="language-go">t := reflect.TypeOf(3) // 返回一个reflect.Type 
+fmt.Println(t.String()) 
+fmt.Println(t)
+</code></pre>
+<p>reflect.Type 是满足fmt.Stringer 接口的，比如以下打印类型，就是通过将值通过relfect.TypeOf 的结果输出的</p>
+<pre><code class="language-go">fmt.Printf(&quot;%T\n&quot;, 3) // &quot;int&quot;
+</code></pre>
+<h2 id="reflectvalue">reflect.Value</h2>
+<p>函数reflect.ValueOf 接受任意的interface{} 类型，并返回对应动态类型的reflect.Value 和 reflect.TypeOf类似，reflect.ValueOf 返回的结果也是对于具体的类型，但是reflect.Value 也可以持有一个接口值。</p>
+<p>和reflect.Type 类似，reflect.Value 也满足fmt.Stringer接口，但是除非Value 持有的是字符串,否则String 只是返回具体的类型。</p>
+<pre><code class="language-go">v := reflect.ValueOf(3) // 返回一个 reflect.Value
+fmt.Println(v) // &quot;3&quot;
+fmt.Printf(&quot;%v\n&quot;, v) // &quot;3&quot;
+fmt.Println(v.String())
+</code></pre>
+<p>调用Value 的Type 方法将返回具体类型所对应的 reflect.Type:</p>
+<pre><code class="language-go">t := v.Type() // 返回一个reflect.Type
+fmt.Println(t.String()) // &quot;int&quot;
+</code></pre>
+<p>逆操作是调用reflect.ValueOf 对应的 reflect.Value.Interface 方法，它返回一个 interface{} 类型表示reflect.Value 对应的具体值：</p>
+<pre><code class="language-go">v := reflect.ValueOf(3) // 得到一个reflect.Value
+x := v.Interface() // 转换为interface{}
+i := x.(int)     // 转为int
+fmt.Printf(&quot;%d\n&quot;, i) // 3
+</code></pre>
+<p>一个reflect.Value 和interface 都能够存储任意的值，所不同的是，一个空的接口隐藏了值对应的表示方式和所有的公开的方法，因此只有我们知道具体的动态类型才能使用类型断言来访问内部的值。</p>
+<p>但reflect.Value 可以通过Kind 方法获取对应的类型，然后再进行类型选择，且kinds 的类型是有限的</p>
+<p>以下的kinds 所有类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">kind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Bool</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+</tr>
+<tr>
+<td style="text-align:center">Int Int8&hellip; Uint Uint8&hellip;</td>
+</tr>
+<tr>
+<td style="text-align:center">Chan</td>
+</tr>
+<tr>
+<td style="text-align:center">Func</td>
+</tr>
+<tr>
+<td style="text-align:center">Ptr</td>
+</tr>
+<tr>
+<td style="text-align:center">Slice</td>
+</tr>
+<tr>
+<td style="text-align:center">Map</td>
+</tr>
+<tr>
+<td style="text-align:center">Array</td>
+</tr>
+<tr>
+<td style="text-align:center">Struct</td>
+</tr>
+<tr>
+<td style="text-align:center">Interface</td>
+</tr>
+<tr>
+<td style="text-align:center">Invalid</td>
+</tr>
+<tr>
+<td style="text-align:center">&hellip;</td>
+</tr>
+</tbody>
+</table>
+<p>实现打印值：</p>
+<pre><code class="language-go">package format
+
+import (
+	&quot;fmt&quot;
+	&quot;reflect&quot;
+	&quot;strconv&quot;
+	&quot;testing&quot;
+	&quot;time&quot;
+)
+
+func Any(value interface{}) string {
+	return formatAtom(reflect.ValueOf(value))
+}
+
+func formatAtom(v reflect.Value) string {
+	switch v.Kind() {
+	case reflect.Invalid:
+		return &quot;invalid&quot;
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		return strconv.FormatInt(v.Int(), 10)
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+		return strconv.FormatUint(v.Uint(), 10)
+	case reflect.Bool:
+		return strconv.FormatBool(v.Bool())
+	case reflect.String:
+		return v.String()
+	case reflect.Chan, reflect.Func, reflect.Ptr, reflect.Slice, reflect.Map:
+		return v.Type().String() + &quot; 0x&quot; + strconv.FormatUint(uint64(v.Pointer()), 16)
+	default: // reflect.Array, reflect.Struct, reflect.Interface
+		return v.Type().String() + &quot; value&quot;
+	}
+}
+
+func Test_formatAtom(t *testing.T) {
+	var x int64 = 1
+	var d time.Duration = 1 * time.Nanosecond
+	fmt.Println(Any(x))
+	fmt.Println(Any(d))
+	fmt.Println(Any([]int64{x}))
+	fmt.Println(Any([]time.Duration{d}))
+}
+</code></pre>
+<h2 id="实现一个结构体解析为json格式">实现一个结构体解析为json格式</h2>
+<p>传入reflect.Value 打印相应的值</p>
 <ol>
-<li>ps -A 显示所有的进程信息</li>
-</ol>
-<pre><code class="language-bash">PID TTY          TIME CMD
-     1 ?        00:00:08 systemd
-     2 ?        00:00:00 kthreadd
-     4 ?        00:00:00 kworker/0:0H
-     6 ?        00:00:00 ksoftirqd/0
-     7 ?        00:00:00 migration/0
-     8 ?        00:00:00 rcu_bh
-     9 ?        00:00:25 rcu_sched
-    10 ?        00:00:00 lru-add-drain
-    11 ?        00:00:00 watchdog/0
-    12 ?        00:00:01 watchdog/1
-    13 ?        00:00:00 migration/1
-    14 ?        00:00:00 ksoftirqd/1
-    16 ?        00:00:00 kworker/1:0H
-    ......
-</code></pre>
-<ol start="2">
-<li>ps -aux 显示所有包含其他使用者的行程</li>
-</ol>
-<pre><code class="language-bash">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root          1  0.0  0.1 125696  4264 ?        Ss   04:55   0:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
-root          2  0.0  0.0      0     0 ?        S    04:55   0:00 [kthreadd]
-root          4  0.0  0.0      0     0 ?        S&lt;   04:55   0:00 [kworker/0:0H]
-root          6  0.0  0.0      0     0 ?        S    04:55   0:00 [ksoftirqd/0]
-root          7  0.0  0.0      0     0 ?        S    04:55   0:00 [migration/0]
-root          8  0.0  0.0      0     0 ?        S    04:55   0:00 [rcu_bh]
-root          9  0.0  0.0      0     0 ?        S    04:55   0:25 [rcu_sched]
-root         10  0.0  0.0      0     0 ?        S&lt;   04:55   0:00 [lru-add-drain]
-</code></pre>
-<ol start="3">
 <li>
-<p>ps -ef 显示所有进程信息，连同命令行</p>
+<p>通过v.Kind() 方法，获取当前value 类型 对每个类型进行分析， 根据对应的类型打印值</p>
 </li>
 <li>
-<p>ps -u [用户名]  查询指定用户名的所有进程</p>
+<p>对于Slice 和Array 俩者的逻辑是一样的，Len 方法返回Slice 或Array 值中的元素个数，
+Index(i) 活动索引i对应的元素，返回的也是一个reflect.Value 类型的值；</p>
+</li>
+<li>
+<p>Struct： NumField 方法报告结构体中成员的数量，Field(i)以reflect.Value 类型返回第i个成员的值。</p>
+</li>
+<li>
+<p>Map: MapKeys 方法返回一个reflect.Value类型的slice, 每一个都对应map的key。
+遍历map 的顺序也是随机的。MapIndex(key) 返回map 中key 对应的value。</p>
 </li>
 </ol>
-<h2 id="netstat-查询网络信息">netstat 查询网络信息</h2>
-<p>常用参数：</p>
-<p>-a (all)显示所有选项，默认不显示LISTEN相关</p>
-<p>-t (tcp)仅显示tcp相关选项</p>
-<p>-u (udp)仅显示udp相关选项</p>
-<p>-n 拒绝显示别名，能显示数字的全部转化成数字。</p>
-<p>-l 仅列出有在 Listen (监听) 的服务状态</p>
-<p>-p 显示建立相关链接的程序名</p>
-<h3 id="netstat-查询所有的网络状态">netstat 查询所有的网络状态</h3>
-<pre><code>netstat -a
+<pre><code class="language-go">import (
+	&quot;encoding/json&quot;
+	&quot;bytes&quot;
+	&quot;fmt&quot;
+	&quot;reflect&quot;
+	&quot;testing&quot;
+)
+
+// Marshal jsonmarshal 将一个类型解析为json格式
+func Marshal(x interface{}) ([]byte, error) {
+	var buf bytes.Buffer
+	if err := encode(&amp;buf, reflect.ValueOf(x)); err != nil {
+		return nil, err
+	}
+	return buf.Bytes(), nil
+}
+
+func encode(buf *bytes.Buffer, v reflect.Value) error {
+	switch v.Kind() {
+	case reflect.Invalid:
+		buf.WriteString(&quot;null&quot;)
+	case reflect.Int, reflect.Int8, reflect.Int16,
+		reflect.Int32, reflect.Int64:
+		fmt.Fprintf(buf, &quot;%d&quot;, v.Int())
+	case reflect.Uint, reflect.Uint8, reflect.Uint16,
+		reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+		fmt.Fprintf(buf, &quot;%d&quot;, v.Uint())
+	case reflect.String:
+		fmt.Fprintf(buf, &quot;%q&quot;, v.String())
+	case reflect.Bool:
+		if v.Bool() {
+			buf.WriteString(&quot;true&quot;)
+		} else {
+			buf.WriteString(&quot;false&quot;)
+		}
+	case reflect.Ptr:
+		return encode(buf, v.Elem())
+	case reflect.Slice, reflect.Array:
+		buf.WriteByte('[')
+		for i := 0; i &lt; v.Len(); i++ {
+			if i &gt; 0 {
+				buf.WriteByte(' ')
+			}
+			if err := encode(buf, v.Index(i)); err != nil {
+				return err
+			}
+			if i &lt; v.Len()-1 {
+				buf.WriteByte(',')
+			}
+		}
+		buf.WriteByte(']')
+	case reflect.Map:
+		buf.WriteByte('{')
+		for i, key := range v.MapKeys() {
+			if i &gt; 0 {
+				buf.WriteByte(' ')
+			}
+			if err := encode(buf, key); err != nil {
+				return err
+			}
+			buf.WriteString(&quot;: &quot;)
+			if err := encode(buf, v.MapIndex(key)); err != nil {
+				return err
+			}
+			if i &lt; v.Len()-1 {
+				buf.WriteByte(',')
+			}
+		}
+		buf.WriteByte('}')
+	case reflect.Struct:
+		buf.WriteByte('{')
+		for i := 0; i &lt; v.NumField(); i++ {
+			if i &gt; 0 {
+				buf.WriteByte(' ')
+			}
+			fmt.Fprintf(buf, &quot;%q:&quot;, v.Type().Field(i).Name)
+			if err := encode(buf, v.Field(i)); err != nil {
+				return err
+			}
+			if i &lt; v.NumField()-1 {
+				buf.WriteByte(',')
+			}
+		}
+		buf.WriteByte('}')
+	default: // complex, chan, interface, func
+		fmt.Fprint(buf, &quot;null&quot;)
+	}
+	return nil
+}
+
+func TestJsonMarshal(t *testing.T) {
+	type Movie struct {
+		Title, Subtitle string
+		Year            int
+		Color           bool
+		Actor           map[string]string
+		Oscars          []string
+		Sequel          *string
+	}
+	strangelove := Movie{
+		Title:    &quot;Dr. Strangelove&quot;,
+		Subtitle: &quot;How I Learned to Stop Worrying and Love the Bomb&quot;,
+		Year:     1964,
+		Color:    false,
+		Actor: map[string]string{
+			&quot;Dr. Strangelove&quot;:            &quot;Peter Sellers&quot;,
+			&quot;Grp. Capt. Lionel Mandrake&quot;: &quot;Peter Sellers&quot;,
+			&quot;Pres. Merkin Muffley&quot;:       &quot;Peter Sellers&quot;,
+			&quot;Gen. Buck Turgidson&quot;:        &quot;George C. Scott&quot;,
+			&quot;Brig. Gen. Jack D. Ripper&quot;:  &quot;Sterling Hayden&quot;,
+			`Maj. T.J. &quot;King&quot; Kong`:      &quot;Slim Pickens&quot;,
+		},
+		Oscars: []string{
+			&quot;Best Actor (Nomin.)&quot;,
+			&quot;Best Adapted Screenplay (Nomin.)&quot;,
+			&quot;Best Director (Nomin.)&quot;,
+			&quot;Best Picture (Nomin.)&quot;,
+		},
+	}
+	encodeBytes, err := Marshal(strangelove)
+	if err != nil {
+		t.Fatal(err.Error())
+	} else {
+		t.Log(string(encodeBytes))
+	}
+	var got Movie
+	if err := json.Unmarshal(encodeBytes, &amp;got); err != nil {
+		t.Fatal(err.Error())
+	}
+	if !reflect.DeepEqual(got, strangelove) {
+		t.Error(&quot;jsonUnmarshal faild!!!&quot;)
+	} else {
+		t.Logf(&quot;%v&quot;, got)
+	}
+}
 </code></pre>
-<h3 id="一般使用的话">一般使用的话</h3>
-<pre><code># 查询相应的处于监听状态的tcp 
-netstat -alnt 
-
-# 查询指定的端口号
-netstat -alnt | grep 8080
-
-# 加上 p 查询到相应的 进程
-netstat -alntp | grep 8080
+<h2 id="修改reflectvalue-的值">修改reflect.Value 的值</h2>
+<p>在go中是可以通过反射来修改当前变量的值的，前提是当前reflect.Value 是可以寻址的。</p>
+<p>首先，先确定reflect.Value 中addressable 和变量类型的addressable 是有点差别的。 下面是reflect.Value 中可寻址的变量：</p>
+<ul>
+<li>slice 的元素</li>
+<li>可寻址数组的元素</li>
+<li>可寻址struct 的字段</li>
+<li>指针引用的结果</li>
+</ul>
+<pre><code class="language-go">x := 2
+a := reflect.ValueOf(2)
+b := reflect.ValueOf(x)
+c := reflect.ValueOf(&amp;x)
+d := x.Elem()
+</code></pre>
+<p>查看当前每个接受的Value 是否能够取得地址</p>
+<pre><code class="language-go">fmt.Println(a.CanAddr()) // false
+fmt.Println(b.CanAddr()) // false
+fmt.Println(c.CanAddr()) // false
+fmt.Println(d.CanAddr()) // true
+</code></pre>
+<p>可以看出每当我们通过指针间接地获取的reflect.Value 都是可取地址的，即使开始的是一个不可取地址的Value。比如，slice 的索引表达式e[i]将隐式地包含一个指针，它是可取地址的，即使开始的e表达式不支持也没有关系。则reflect.ValueOf(e).Index(i)对于的值也是可取地址的，即使原始的reflect.ValueOf(e) 不支持也没有关系。</p>
+<p>一般可以使用reflect.Value(&amp;v).Elem() 获取一个可寻址对象。</p>
+<pre><code class="language-go">x := 2
+addr := reflect.Value(&amp;x).Elem() // 获取可寻址对象
+addr.CanAddr() // true
+addr.Set(reflect.ValueOf(3)) // x 3
+addr.SetInt(4)
 </code></pre>
 
     </div>
@@ -368,13 +614,13 @@ netstat -alntp | grep 8080
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://nattygui.github.io/2020/09/installredis/" title="Centos7 安装redis"><i
+                <a href="https://nattygui.github.io/2020/09/querycommand/" title="centos7 中常用的查询命令"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
             </li>
             <li class="next">
-                <a href="https://nattygui.github.io/2020/10/typeandvalue/"
-                    title="reflect.Type 和 reflect.Value"><span>上一篇&nbsp;&nbsp;</span><i
+                <a href="https://nattygui.github.io/2020/10/reflect/"
+                    title="reflect"><span>上一篇&nbsp;&nbsp;</span><i
                         class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             

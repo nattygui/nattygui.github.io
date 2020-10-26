@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        centos7 中常用的查询命令 - nattygui的学习记录
+        reflect - nattygui的学习记录
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,33 +20,33 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12" />
+    <meta name="description" content="为什么使用反射 有时候我们需要编写一个函数能够处理一类并不满足普通公共接口类型的值，也有可能是因为它们并没有确定的表示方式，或者是在我们设计该" />
     <meta name="generator" content="Hugo 0.76.5 with theme pure" />
-    <title>centos7 中常用的查询命令 - nattygui的学习记录</title>
+    <title>reflect - nattygui的学习记录</title>
     
     
     <link rel="stylesheet" href="https://nattygui.github.io/css/style.min.c4bc7071f132c964c2116bca53b392933f377e5ca7b7051ed245187c621a2d3e.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="centos7 中常用的查询命令" />
-<meta property="og:description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12" />
+    <meta property="og:title" content="reflect" />
+<meta property="og:description" content="为什么使用反射 有时候我们需要编写一个函数能够处理一类并不满足普通公共接口类型的值，也有可能是因为它们并没有确定的表示方式，或者是在我们设计该" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nattygui.github.io/2020/09/querycommand/" />
-<meta property="article:published_time" content="2020-09-04T09:27:54+08:00" />
-<meta property="article:modified_time" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="name" content="centos7 中常用的查询命令">
-<meta itemprop="description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12">
-<meta itemprop="datePublished" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="dateModified" content="2020-09-04T09:27:54+08:00" />
-<meta itemprop="wordCount" content="428">
+<meta property="og:url" content="https://nattygui.github.io/2020/10/reflect/" />
+<meta property="article:published_time" content="2020-10-22T07:49:38+08:00" />
+<meta property="article:modified_time" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="name" content="reflect">
+<meta itemprop="description" content="为什么使用反射 有时候我们需要编写一个函数能够处理一类并不满足普通公共接口类型的值，也有可能是因为它们并没有确定的表示方式，或者是在我们设计该">
+<meta itemprop="datePublished" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="dateModified" content="2020-10-22T07:49:38+08:00" />
+<meta itemprop="wordCount" content="416">
 
 
 
-<meta itemprop="keywords" content="centos7," />
+<meta itemprop="keywords" content="reflect,go," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="centos7 中常用的查询命令"/>
-<meta name="twitter:description" content="centos7 中常用的查询命令 ps 显示当前进程信息 ps -A 显示所有的进程信息 PID TTY TIME CMD 1 ? 00:00:08 systemd 2 ? 00:00:00 kthreadd 4 ? 00:00:00 kworker/0:0H 6 ? 00:00:00 ksoftirqd/0 7 ? 00:00:00 migration/0 8 ? 00:00:00 rcu_bh 9 ? 00:00:25 rcu_sched 10 ? 00:00:00 lru-add-drain 11 ? 00:00:00 watchdog/0 12"/>
+<meta name="twitter:title" content="reflect"/>
+<meta name="twitter:description" content="为什么使用反射 有时候我们需要编写一个函数能够处理一类并不满足普通公共接口类型的值，也有可能是因为它们并没有确定的表示方式，或者是在我们设计该"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -266,8 +266,8 @@
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2020/09/querycommand/"
-    >centos7 中常用的查询命令</a
+    href="/2020/10/reflect/"
+    >reflect</a
   >
 </h1>
 
@@ -275,87 +275,91 @@
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://nattygui.github.io/2020/09/querycommand/" class="article-date">
-  <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+<a href="https://nattygui.github.io/2020/10/reflect/" class="article-date">
+  <time datetime="2020-10-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-10-22</time>
 </a>
 </span>
 <span class="article-category">
   <i class="icon icon-folder"></i>&nbsp;
-  <a class="article-category-link" href="/categories/centos7/"> centos7 </a>
+  <a class="article-category-link" href="/categories/go/"> go </a>
 </span>  
   <span class="article-tag">
     <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/centos7/"> centos7 </a>
+    <a class="article-tag-link" href="/tags/reflect/"> reflect </a>
+    <a class="article-tag-link" href="/tags/go/"> go </a>
   </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/09/querycommand/#comments"
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/2020/10/reflect/#comments"
             class="article-comment-link">评论</a></span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <h1 id="centos7-中常用的查询命令">centos7 中常用的查询命令</h1>
-<h2 id="ps-显示当前进程信息">ps 显示当前进程信息</h2>
-<ol>
-<li>ps -A 显示所有的进程信息</li>
-</ol>
-<pre><code class="language-bash">PID TTY          TIME CMD
-     1 ?        00:00:08 systemd
-     2 ?        00:00:00 kthreadd
-     4 ?        00:00:00 kworker/0:0H
-     6 ?        00:00:00 ksoftirqd/0
-     7 ?        00:00:00 migration/0
-     8 ?        00:00:00 rcu_bh
-     9 ?        00:00:25 rcu_sched
-    10 ?        00:00:00 lru-add-drain
-    11 ?        00:00:00 watchdog/0
-    12 ?        00:00:01 watchdog/1
-    13 ?        00:00:00 migration/1
-    14 ?        00:00:00 ksoftirqd/1
-    16 ?        00:00:00 kworker/1:0H
-    ......
+      <h1 id="为什么使用反射">为什么使用反射</h1>
+<p>有时候我们需要编写一个函数能够处理一类并不满足普通公共接口类型的值，也有可能是因为它们并没有确定的表示方式，或者是在我们设计该函数的时候这些类型可能还不存在等等</p>
+<p>比如如下实现一个打印含有String() 方法的自定义类型和基本数据类型比如int、bool等。通过类型推断加上switch case分支进行判断。</p>
+<pre><code class="language-go">func Sprint(x interface{}) string {
+	type stringer interface {
+		String() string
+	}
+	switch x := x.(type) {
+	case stringer:
+		return x.String()
+	case string:
+		return x
+	case int:
+		return strconv.Itoa(x)
+	case bool:
+		if x {
+			return &quot;true&quot;
+		}
+		return &quot;false&quot;
+	default:
+		return &quot;unknown&quot;
+	}
+}
 </code></pre>
-<ol start="2">
-<li>ps -aux 显示所有包含其他使用者的行程</li>
-</ol>
-<pre><code class="language-bash">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root          1  0.0  0.1 125696  4264 ?        Ss   04:55   0:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
-root          2  0.0  0.0      0     0 ?        S    04:55   0:00 [kthreadd]
-root          4  0.0  0.0      0     0 ?        S&lt;   04:55   0:00 [kworker/0:0H]
-root          6  0.0  0.0      0     0 ?        S    04:55   0:00 [ksoftirqd/0]
-root          7  0.0  0.0      0     0 ?        S    04:55   0:00 [migration/0]
-root          8  0.0  0.0      0     0 ?        S    04:55   0:00 [rcu_bh]
-root          9  0.0  0.0      0     0 ?        S    04:55   0:25 [rcu_sched]
-root         10  0.0  0.0      0     0 ?        S&lt;   04:55   0:00 [lru-add-drain]
-</code></pre>
-<ol start="3">
-<li>
-<p>ps -ef 显示所有进程信息，连同命令行</p>
-</li>
-<li>
-<p>ps -u [用户名]  查询指定用户名的所有进程</p>
-</li>
-</ol>
-<h2 id="netstat-查询网络信息">netstat 查询网络信息</h2>
-<p>常用参数：</p>
-<p>-a (all)显示所有选项，默认不显示LISTEN相关</p>
-<p>-t (tcp)仅显示tcp相关选项</p>
-<p>-u (udp)仅显示udp相关选项</p>
-<p>-n 拒绝显示别名，能显示数字的全部转化成数字。</p>
-<p>-l 仅列出有在 Listen (监听) 的服务状态</p>
-<p>-p 显示建立相关链接的程序名</p>
-<h3 id="netstat-查询所有的网络状态">netstat 查询所有的网络状态</h3>
-<pre><code>netstat -a
-</code></pre>
-<h3 id="一般使用的话">一般使用的话</h3>
-<pre><code># 查询相应的处于监听状态的tcp 
-netstat -alnt 
+<p>写下如下的测试函数，输出结果</p>
+<pre><code class="language-go">type Call struct {
+	content string
+}
 
-# 查询指定的端口号
-netstat -alnt | grep 8080
+func (c *Call) String() string {
+	return c.content
+}
 
-# 加上 p 查询到相应的 进程
-netstat -alntp | grep 8080
+func TestSprint(t *testing.T) {
+	call := Call{content: &quot;This is call struct&quot;}
+	t.Log(Sprint(&amp;call))
+
+	num := 4
+	t.Log(Sprint(num))
+
+	bl := true
+	t.Log(Sprint(bl))
+
+	str := &quot;a string&quot;
+	t.Log(Sprint(str))
+
+	s := struct{}{}
+	t.Log(Sprint(s))
+}
 </code></pre>
+<pre><code>[admin@localhost whyUseReflect]$ go test -v 
+=== RUN   TestSprint
+    sprint_test.go:39: This is call struct
+    sprint_test.go:42: 4
+    sprint_test.go:45: true
+    sprint_test.go:48: a string
+    sprint_test.go:51: unknown
+--- PASS: TestSprint (0.00s)
+</code></pre>
+<p>我们可以无限的添加类型，对每个类型进行添加，输出相应的结果，但是这些类型是无穷的，而且当对自定义类型的某个变量进行检查的时候，需要添加这个变量的定义。且当出现自定义类型本身进行嵌套的时候，会陷入死循环，如下所示：</p>
+<pre><code class="language-go">type repeatCall struct {
+    name string
+    call *repeatCall
+}
+</code></pre>
+<p>此时，就需要引用反射了。</p>
 
     </div>
     <div class="article-footer">
@@ -368,14 +372,9 @@ netstat -alntp | grep 8080
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://nattygui.github.io/2020/09/installredis/" title="Centos7 安装redis"><i
+                <a href="https://nattygui.github.io/2020/10/typeandvalue/" title="reflect.Type 和 reflect.Value"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://nattygui.github.io/2020/10/typeandvalue/"
-                    title="reflect.Type 和 reflect.Value"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             
             <li class="toggle-toc">
