@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Functools - nattygui的学习记录
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Functools 函数库用于高阶函数，作用于或返回其他函数的函数。 cmp_to_key functools.cmp_to_key(func) 将原先的cmp函数转换成key功能的工具，用于sorted()， min()， max()" />
+    <meta name="generator" content="Hugo 0.76.5 with theme pure" />
+    <title>Functools - nattygui的学习记录</title>
+    
+    
+    <link rel="stylesheet" href="https://github.com/nattygui/nattygui.github.io.git/css/style.min.c4bc7071f132c964c2116bca53b392933f377e5ca7b7051ed245187c621a2d3e.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Functools" />
+<meta property="og:description" content="Functools 函数库用于高阶函数，作用于或返回其他函数的函数。 cmp_to_key functools.cmp_to_key(func) 将原先的cmp函数转换成key功能的工具，用于sorted()， min()， max()" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://github.com/nattygui/nattygui.github.io.git/2019/10/functools/" />
+<meta property="article:published_time" content="2019-10-13T21:23:13+08:00" />
+<meta property="article:modified_time" content="2019-10-13T21:23:13+08:00" />
+<meta itemprop="name" content="Functools">
+<meta itemprop="description" content="Functools 函数库用于高阶函数，作用于或返回其他函数的函数。 cmp_to_key functools.cmp_to_key(func) 将原先的cmp函数转换成key功能的工具，用于sorted()， min()， max()">
+<meta itemprop="datePublished" content="2019-10-13T21:23:13+08:00" />
+<meta itemprop="dateModified" content="2019-10-13T21:23:13+08:00" />
+<meta itemprop="wordCount" content="1249">
+
+
+
+<meta itemprop="keywords" content="psl,functions," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Functools"/>
+<meta name="twitter:description" content="Functools 函数库用于高阶函数，作用于或返回其他函数的函数。 cmp_to_key functools.cmp_to_key(func) 将原先的cmp函数转换成key功能的工具，用于sorted()， min()， max()"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="" target="_blank">
+            <img class="img-circle img-rotate" src="https://github.com/nattygui/nattygui.github.io.git/touxiang.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">nattygui</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">保持每日学习的态度!!!</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Wuhan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/nattygui/nattygui.github.io.git/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">主页</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/nattygui/nattygui.github.io.git/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">归档</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/nattygui/nattygui.github.io.git/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">分类</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/nattygui/nattygui.github.io.git/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">标签</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/centos7/" class="category-list-link">centos7</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/dbn/" class="category-list-link">dbn</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/docker/" class="category-list-link">docker</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/git/" class="category-list-link">git</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/github/" class="category-list-link">github</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/go/" class="category-list-link">go</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/python-standard-library/" class="category-list-link">python-standard-library</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/pytorch/" class="category-list-link">pytorch</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/beego/" class="tag-list-link">beego</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/centos7/" class="tag-list-link">centos7</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/collections/" class="tag-list-link">collections</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/dbn/" class="tag-list-link">dbn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/functions/" class="tag-list-link">functions</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/git/" class="tag-list-link">git</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/github/" class="tag-list-link">github</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/go/" class="tag-list-link">go</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/itertor-and-generator/" class="tag-list-link">itertor-and-generator</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/psl/" class="tag-list-link">psl</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/pytorch/" class="tag-list-link">pytorch</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/09/querycommand/" class="title">centos7 中常用的查询命令</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/09/installredis/" class="title">Centos7 安装redis</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/09/privoxy/" class="title">Privoxy</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/06/beegoinit/" class="title">beego安装与配置</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-06-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-06-22</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/06/strbytesconv/" class="title">golang实现不分配额外内存[]byte和string转换</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-06-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-06-22</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/nattygui/nattygui.github.io.git/2019/10/functools/"
+    >Functools</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://github.com/nattygui/nattygui.github.io.git/2019/10/functools/" class="article-date">
+  <time datetime="2019-10-13 21:23:13 &#43;0800 CST" itemprop="datePublished">2019-10-13</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/nattygui/nattygui.github.io.git/categories/python-standard-library/"> Python Standard Library </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/nattygui/nattygui.github.io.git/tags/psl/"> psl </a>
+    <a class="article-tag-link" href="/nattygui/nattygui.github.io.git/tags/functions/"> functions </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/nattygui/nattygui.github.io.git/2019/10/functools/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1249字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="functools">Functools</h1>
+<p>函数库用于高阶函数，作用于或返回其他函数的函数。</p>
+<h2 id="cmp_to_key">cmp_to_key</h2>
+<p>functools.cmp_to_key(func)
+将原先的cmp函数转换成key功能的工具，用于sorted()， min()， max()， heapq.nlargeest()， heapq.nsmallest()， itertools.groupby()。</p>
+<pre><code class="language-python"># 使用cmp_to_key() 进行排序
+from functools import cmp_to_key
+a = sorted([3, 4, 5, 1], key=cmp_to_key(lambda x,y: x-y))
+print(a)
+
+# 使用cmp_to_key() 来进行对任意的俩个数组合成的最大值进行排序
+nums = ['8', '555', '122', '10', '55', '7', '12']
+ans_nums = sorted(nums, key=cmp_to_key(lambda x, y: int(x+y)-int(y+x)))
+print(ans_nums)
+# ['10', '12', '122', '555', '55', '7', '8']
+'''
+1012 &lt; 1210, 10122&lt;12210, ...
+12122 &lt; 12212, 12555&lt;55512, ...
+122555 &lt; 555122, 12255 &lt; 55122, ...
+557 &lt; 755, 558 &lt; 855, ...
+'''
+
+#cmp_to_key() 的原型
+def cmp_to_key(mycmp):
+    'Convert a cmp= function into a key= function'
+    class K(object):
+        def __init__(self, obj, *args):
+            print('obj created with ',obj)
+            self.obj = obj
+        def __lt__(self, other):
+            print('comparing less than ',self.obj)
+            return mycmp(self.obj, other.obj) &lt; 0
+        def __gt__(self, other):
+            print('comparing greter than ',self.obj)
+            return mycmp(self.obj, other.obj) &gt; 0
+        def __eq__(self, other):
+            print('comparing equal to ',self.obj)
+            return mycmp(self.obj, other.obj) == 0
+        def __le__(self, other):
+            print('comparing less than equal ',self.obj)
+            return mycmp(self.obj, other.obj) &lt;= 0
+        def __ge__(self, other):
+            print('comparing greater than equal',self.obj)
+            return mycmp(self.obj, other.obj) &gt;= 0
+        def __ne__(self, other):
+            print('comparing not equal ',self.obj)
+            return mycmp(self.obj, other.obj) != 0
+    return K
+def mycmp(a, b):
+    print(&quot;In Mycmp for&quot;, a, ' ', b)
+    if a &lt; b:
+        return -1
+    elif a &gt; b:
+        return 1
+    elif a == b:
+        return 0
+print(sorted([3,4,2,5],key=cmp_to_key(mycmp)))
+'''
+obj created with  3
+obj created with  4
+obj created with  2
+obj created with  5
+comparing less than  4
+In Mycmp for 4   3
+comparing less than  2
+In Mycmp for 2   4
+comparing less than  2
+In Mycmp for 2   4
+comparing less than  2
+In Mycmp for 2   3
+comparing less than  5
+In Mycmp for 5   3
+comparing less than  5
+In Mycmp for 5   4
+[2, 3, 4, 5]
+'''
+</code></pre>
+<h2 id="lru_cache">lru_cache</h2>
+<p>@functools.lru_cache(maxsize=128, typed=False)
+装饰成具有缓存机制，空间最大可储存maxsize大小的函数。
+lru表示最近最少使用
+maxsize 初始值为128，若为None则无限缓存
+typed 用来区分参数，比如fun(3) 与 fun(3.0)</p>
+<pre><code class="language-python"># 不使用@lru_cache来计算
+import time
+def fib(n):
+    print(&quot;I'm processing {}&quot;.format(n),end=&quot;  &quot;)
+    if n &lt; 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+t1 = time.clock()
+a = []
+for n in [5, 3]:
+    a.append(fib(n))
+    print('\n')
+t2 = time.clock()
+print(a)
+print(t2 - t1)
+'''
+I'm processing 5  I'm processing 4  I'm processing 3  
+I'm processing 2  I'm processing 1  I'm processing 0  
+I'm processing 1  I'm processing 2  I'm processing 1  
+I'm processing 0  I'm processing 3  I'm processing 2  
+I'm processing 1  I'm processing 0  I'm processing 1  
+
+I'm processing 3  I'm processing 2  I'm processing 1  
+I'm processing 0  I'm processing 1  
+
+[5, 2]
+0.000754200000073979
+'''
+
+# 使用@lru_cache来计算
+from functools import lru_cache
+import time
+@lru_cache(maxsize=None)
+def fib(n):
+    print(&quot;I'm processing {}&quot;.format(n),end=&quot;  &quot;)
+    if n &lt; 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+t1 = time.clock()
+a = []
+for n in [5, 3]:
+    a.append(fib(n))
+    print('\n')
+t2 = time.clock()
+print(a)
+print(t2 - t1)
+print(fib.cache_info())
+'''
+I'm processing 5  I'm processing 4  I'm processing 3  
+I'm processing 2  I'm processing 1  I'm processing 0  
+
+
+
+[5, 2]
+0.0006648000003224297
+CacheInfo(hits=4, misses=6, maxsize=None, currsize=6)
+'''
+</code></pre>
+<p>从上可以看出，之前执行过的函数都被保存在cache中，省去了很多计算</p>
+<pre><code class="language-python"># 计算时间性能
+# 不使用@lru_cache 计算
+import time
+def fib(n):
+    #print(&quot;I'm processing {}&quot;.format(n),end=&quot;  &quot;)
+    if n &lt; 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+t1 = time.clock()
+a = [fib(n) for n in range(40)]
+t2 = time.clock()
+print(a)
+print(t2 - t1,&quot; s&quot;)
+'''
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986]
+54.68690629999992 s
+'''
+# 使用@lru_cache计算
+from functools import lru_cache
+import time
+@lru_cache(maxsize=None)
+def fib(n):
+    #print(&quot;I'm processing {}&quot;.format(n),end=&quot;  &quot;)
+    if n &lt; 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+t1 = time.clock()
+a = [fib(n) for n in range(40)]
+t2 = time.clock()
+print(a)
+print(t2 - t1, &quot; s&quot;)
+print(fib.cache_info())
+'''
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986]
+9.619999946153257e-05 s
+CacheInfo(hits=76, misses=40, maxsize=None, currsize=40)
+'''
+</code></pre>
+<p>从上得到，不使用@lru_cache 时间为54.6s 使用时仅仅为0.00009s</p>
+<p>使用cache_info() 来查看缓存信息  使用cache_clear() 来清除缓存</p>
+<h2 id="partial">partial</h2>
+<p>functools.partial(func, *args, **keywords)
+返回一个具有func功能，并且带有args和keywords参数的partial object</p>
+<pre><code class="language-python"># 将一个数字字符串转化为2进制数
+from functools import partial
+basetwo = partial(int, base=2)
+basetwo.__doc__ = 'Convert base 2 string to an int'
+basetwo('10010') # 上面式子等价于 int('10010', base=2)
+# 18
+
+# 假设你项以某个点为基点，根据点和基点之间的距离来排序所有的这些点。
+import math
+from functools import partial
+def distance(p1, p2):
+    x1, y1 = p1
+    x2, y2 = p2
+    return math.hypot(x2-x1, y2-y1)
+points = [ (1, 2), (3, 4), (5, 6), (7, 8) ]
+# 以（4，3）为基点
+ans = sorted(points, key=partial(distance, (4,3)))
+print(ans)
+# [(3, 4), (1, 2), (5, 6), (7, 8)]
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://github.com/nattygui/nattygui.github.io.git/2019/10/collections/" title="Collections"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://github.com/nattygui/nattygui.github.io.git/2019/10/asyncio/"
+                    title="Asyncio"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+</ul>
+  
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/go.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://github.com/nattygui/nattygui.github.io.git/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://github.com/nattygui/nattygui.github.io.git/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/github.com\/nattygui\/nattygui.github.io.git',
+            CONTENT_URL: 'https:\/\/github.com\/nattygui\/nattygui.github.io.git\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://github.com/nattygui/nattygui.github.io.git/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

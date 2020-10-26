@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="nattygui">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=http://localhost:1313/css/syntax.css>
+    <link rel="stylesheet" href=http://localhost:1313/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>title</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=http://localhost:1313><img src="http://localhost:1313/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=http://localhost:1313>
+        
+            title
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/blog/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/yourgithubusername23434"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <div class="spacer"></div>
+    
+      
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#goroutines和channels">Goroutines和Channels</a>
+<ul>
+<li><a href="#goroutine">Goroutine</a>
+<ul>
+<li><a href="#goroutine和线程">goroutine和线程</a>
+<ul>
+<li><a href="#动态栈">动态栈</a></li>
+<li><a href="#goroutine调度">goroutine调度</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#并发版本的hello-world">并发版本的hello world</a>
+<ul>
+<li><a href="#使用-sync-mutex-实现">使用 sync.mutex 实现</a></li>
+<li><a href="#使用无缓冲通道channel-实现">使用无缓冲通道channel 实现</a></li>
+<li><a href="#使用有缓存的通道">使用有缓存的通道</a></li>
+<li><a href="#n个缓存的通道">N个缓存的通道</a></li>
+<li><a href="#使用-sync-waitgroup-来实现">使用 sync.WaitGroup 来实现</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    
+
+<h1 id="goroutines和channels">Goroutines和Channels</h1>
+
+<p>并发程序指同时进行多个任务的程序，随着硬件的发展，并发程序变得越来越重要。web服务器会一次处理成千上万的请求。平板电脑和手机app在渲染用户画面同时还会后台执行各种计算任务和网络请求。即使是传统的批处理问题-读取数据，计算，写输出-现在也会用并发来隐藏掉I/O的操作延迟以充分利用现代计算机设备的多个核心。计算机的性能每年都在以非线性的速度增长。</p>
+
+<p>golang中并发程序可以用俩种手段来实现，本章讲解goroutine和channe，其支持“顺序通信进程”（communicating sequential processes）或被简称为CSP。CSP是一种现代的并发编程模型，在这种编程模型中值会在不同的运行实例（goroutine）中传递，尽管大多数情况下任然是被限制在单一实例中。</p>
+
+<h2 id="goroutine">Goroutine</h2>
+
+<h3 id="goroutine和线程">goroutine和线程</h3>
+
+<p>goroutine和操作系统的线程区别可以忽略不记，俩者的区别实际上只是一个量上的区别，但是量变会引起质变的道理同样适用于goroutine和线程。</p>
+
+<h4 id="动态栈">动态栈</h4>
+
+<p>每一个OS线程都有一个固定大小的内存块（一般会是2MB）来做栈，这个栈会用来存储当前正在被调用或挂起（指在调用其它函数时）的函数的内部变量。</p>
+
+<p>而每一个goroutine会以一个很小的栈开始其生命周期，一般只需要2KB，一个goroutine的栈和操作系统线程一样，会保存其活跃或挂起的函数调用的本地变量。</p>
+
+<p>但是和OS线程不太一样的是一个goroutine的栈大小并不是固定的，栈的大小会根据需要动态地伸缩。而goroutine栈的最大值有1GB，比传统的固定大小的线程栈要大得多，尽管一般情况下，大多goroutine都不需要这么大得栈。</p>
+
+<h4 id="goroutine调度">goroutine调度</h4>
+
+<p>OS线程会被操作系统内核调度，每几毫秒，一个硬件计时器会中断处理器，这会调用一个叫做scheduler的内核函数，这个函数会挂起当前执行的线程并保存内存中它的寄存器内容，并检查线程列表并决定下一次哪个线程可以被运行，并从内存中恢复该线程的寄存器信息，然后恢复执行该线程的现场并开始执行线程。因为操作系统线程是被内核所调度，所以从一个线程恢复执行该线程的现场并开始执行线程。</p>
+
+<p>因为操作系统线程是被内核所调度，所以从一个线程向另一个“移动”需要完整的上下文切换，也就是说保存一个用户线程的状态到内存，恢复另一个线程到寄存器，然后更新调度器的数据结构。这几步操作很慢，因为其局限性很差需要几次内存访问，并且会增加运行的cpu周期。</p>
+
+<p>Go的运行时包含了其自己的调度器，这个调度器使用了一些技术手段，比如m：n调度，因为其会在n个操作系统线程上多工调度m个goroutine。Go调度器的工作和内核的调度是相似的，但是这个调度器只会关注单独Go程序中的goroutine。</p>
+
+<p>和操作系统的线程调度不同的是，go调度器并不是用一个硬件定时器而是被go语言”建筑“本身进行调度的。例如当一个goroutine调用了time.Sleep或者被channel调用或者mutex操作阻塞时，调度器会使其进入休眠并开始执行另一个goroutine直到时机到了再去唤醒第一goroutine。因为这种调度方式不需要进入内核的上下文，所以重新调度一个goroutine比调度一个线程代价要低得多。</p>
+
+<h2 id="并发版本的hello-world">并发版本的hello world</h2>
+
+<h3 id="使用-sync-mutex-实现">使用 sync.mutex 实现</h3>
+
+<pre><code class="language-go">func main() {
+    var mu sync.mutex
+
+    mu.Lock()
+
+    go func() {
+        fmt.Println(&quot;hello world&quot;)
+        mu.Unlock()
+    }()
+
+    mu.Lock()
+}
+</code></pre>
+
+<p>在第二次执行Lock() 锁时，由于锁已经被占用所以main函数会阻塞，此时main函数的阻塞会驱使goroutine继续，当goroutine执行完毕时，一个锁会打开，第二锁会继续锁住，main函数会继续执行。</p>
+
+<h3 id="使用无缓冲通道channel-实现">使用无缓冲通道channel 实现</h3>
+
+<p>使用互斥锁是比较低级的做法，现在使用无缓冲的管道实现。</p>
+
+<pre><code class="language-go">func main() {
+    done := make(chan int)
+
+    go func() {
+        fmt.Println(&quot;hello world&quot;)
+        &lt;- done  
+    }
+
+    done &lt;- 1
+}
+
+// 也调换位置实现
+
+</code></pre>
+
+<p>上面中，在最后一条语句向done发送一条1，由于done是无缓冲的，所以它会一直等待done接收才会向下执行。</p>
+
+<p>根据go语言内存模型规范，对于无缓冲Channel进行的接收，发生在对该Channel进行的发送完成之前，因此，后台线程 &lt;-done 接收操作完成之后， main线程的 done &lt;- 1 发送操作才可能完成(从而退出main, 退出程序), 而此时打印工作已经完成了。</p>
+
+<h3 id="使用有缓存的通道">使用有缓存的通道</h3>
+
+<p>上面无缓冲的通道虽然可以正常同步，但是对管道的缓存大小敏感，如果管道有缓存的话，就无法保证main退出之前后台线程能正常打印了。</p>
+
+<p>更好的做法是管道的发送和接收方向调换一下，这样可以避免同步事件受管道缓存大小的影像。</p>
+
+<pre><code class="language-go">func main() {
+    done := make(chan int, 1)
+
+    go func() {
+        fmt.Println(&quot;hello world&quot;)
+        done &lt;- 1
+    }
+
+    &lt;-done
+}
+</code></pre>
+
+<p>对于带缓冲的Channel，对于Channel 的第K个接收完成操作发生在第K+C个发送操作完成之前，其中C是Channel的缓存太小，虽然管道是带缓存的，main 线程接收完成是在后台线程发送开始但还未完成的时刻，此时打印工作也是已经完成的。</p>
+
+<h3 id="n个缓存的通道">N个缓存的通道</h3>
+
+<p>基于带缓存的管道，我们可以很容易将打印线程扩展到N个。下面的例子是开启10个后台线程分别打印</p>
+
+<pre><code class="language-go">func main() {
+    done := make(chan int, 10) 
+
+    // 开N个后台打印缓存
+    for i := 0; i &lt; cap(done); i++ {
+        go func() {
+            fmt.Println(&quot;hello world&quot;)
+            done &lt;- 1
+        }()
+    }
+
+    // 等待N 个后台线程完成
+    for i := 0; i &lt; cap(done); i++ {
+        &lt;- done
+    }
+}
+</code></pre>
+
+<h3 id="使用-sync-waitgroup-来实现">使用 sync.WaitGroup 来实现</h3>
+
+<pre><code class="language-go">func main() {
+    var wg sync.WaitGroup
+
+    // 开N个后台打印线程
+    for i := 0; i &lt; 10; i++ {
+        wg.Add(1)
+
+        go func() {
+            fmt.Println(&quot;hello world&quot;)
+            wg.Done()
+        }()
+
+        // 等待N个后台线程完成
+        wg.Wait()
+    }
+}
+</code></pre>
+
+<p>其中 wg.Add(1) 用于增加等待事件的个数，必须确保在后台线程启动之前启动，当后台线程完成打印工作之后，调用 wg.Done() 表示完成一个事件。main 函数的wg.Wait() 是等待全部的事件完成。</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="http://localhost:1313/posts/tools/centos7/installredis/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="http://localhost:1313/posts/go/data_structures/strbytesconv/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=http://localhost:1313/js/navbutton.js></script>
+</html>

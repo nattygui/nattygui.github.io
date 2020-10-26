@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="nattygui">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=http://localhost:1313/css/syntax.css>
+    <link rel="stylesheet" href=http://localhost:1313/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>title</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=http://localhost:1313><img src="http://localhost:1313/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=http://localhost:1313>
+        
+            title
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/blog/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/yourgithubusername23434"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <div class="spacer"></div>
+    
+      
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#golang实现不分配额外内存-byte和string转换">golang实现不分配额外内存[]byte和string转换</a>
+<ul>
+<li><a href="#普通的强转">普通的强转</a></li>
+<li><a href="#优化后">优化后</a></li>
+<li><a href="#测试">测试</a></li>
+<li><a href="#准确率测试-通过">准确率测试-通过</a></li>
+<li><a href="#基准测试">基准测试</a>
+<ul>
+<li><a href="#结果">结果</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    
+
+<h1 id="golang实现不分配额外内存-byte和string转换">golang实现不分配额外内存[]byte和string转换</h1>
+
+<h2 id="普通的强转">普通的强转</h2>
+
+<p>一般在进行[]byte 和string之间进行转换时，通过进行强转实现。这样进行强转的话，都会在额外的拷贝，从而造成额外的内存分配。</p>
+
+<pre><code class="language-go">str := &quot;test&quot;
+// 转换为[]byte
+bytes := []byte(str)
+// 转换为str
+str1 := string(bytes)
+</code></pre>
+
+<h2 id="优化后">优化后</h2>
+
+<pre><code class="language-go">// 通过底层数据转换
+package strbytesconv
+
+import (
+	&quot;reflect&quot;
+	&quot;unsafe&quot;
+)
+
+// StringToBytes 实现string 转换成 []byte, 不用额外的内存分配
+func StringToBytes(str string) (bytes []byte) {
+	ss := *(*reflect.StringHeader)(unsafe.Pointer(&amp;str))
+	bs := (*reflect.SliceHeader)(unsafe.Pointer(&amp;bytes))
+	bs.Data = ss.Data
+	bs.Len = ss.Len
+	bs.Cap = ss.Len
+	return bytes
+}
+
+// BytesToString 实现 []byte 转换成 string, 不需要额外的内存分配
+func BytesToString(bytes []byte) string {
+	return *(*string)(unsafe.Pointer(&amp;bytes))
+}
+</code></pre>
+
+<ul>
+<li><p>StringHeader 是go中string 在底层的定义</p>
+
+<pre><code class="language-go">type StringHeader struct {
+Data uintptr
+Len  int
+}
+</code></pre></li>
+
+<li><p>SliceHeader 是go中切片 在底层的定义</p>
+
+<pre><code class="language-go">type SliceHeader struct {
+Data uintptr
+Len  int
+Cap  int
+}
+</code></pre>
+
+<p>上诉的优化方法通过将unsafe.Pointer获取地址，实现 SliceHeader 和 SliceHeader 之间的转换。</p></li>
+</ul>
+
+<h2 id="测试">测试</h2>
+
+<h2 id="准确率测试-通过">准确率测试-通过</h2>
+
+<pre><code class="language-go">func Test_StringToBytes(t *testing.T) {
+	type args struct {
+		str string
+	}
+	tests := []struct {
+		name      string
+		args      args
+		wantBytes []byte
+	}{
+		// TODO: Add test cases.
+		{
+			name: &quot;testStrToBytes&quot;,
+			args: args{
+				str: &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;,
+			},
+			wantBytes: []byte(&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gotBytes := StringToBytes(tt.args.str)
+			if !reflect.DeepEqual(gotBytes, tt.wantBytes) {
+				t.Errorf(&quot;StringToBytes() = %v, want %v&quot;, gotBytes, tt.wantBytes)
+			}
+			t.Logf(&quot;gotBytes Pointer %p, tt.args.str Pointer %p&quot;, &amp;gotBytes, &amp;tt.args.str)
+		})
+	}
+}
+</code></pre>
+
+<pre><code class="language-go">func Test_BytesToString(t *testing.T) {
+	type args struct {
+		bytes []byte
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		// TODO: Add test cases.
+		{
+			name: &quot;testBytesToStr&quot;,
+			args: args{
+				bytes: []byte(&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;),
+			},
+			want: &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := BytesToString(tt.args.bytes)
+			if got != tt.want {
+				t.Errorf(&quot;BytesToString() = %v, want %v&quot;, got, tt.want)
+			}
+			t.Logf(&quot;gotStr Pointer %p, tt.args.bytes Pointer %p&quot;, &amp;got, &amp;tt.args.bytes)
+		})
+	}
+}
+</code></pre>
+
+<h2 id="基准测试">基准测试</h2>
+
+<pre><code class="language-go">var testStr = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;
+var testBytes = []byte(testStr)
+
+func getBytesToString(bytes []byte) string {
+	return string(bytes)
+}
+
+func getStringToBytes(str string) []byte {
+	return []byte(str)
+}
+
+func Benchmark_StringToBytes(b *testing.B) {
+	for i := 0; i &lt; b.N; i++ {
+		StringToBytes(testStr)
+	}
+}
+
+func Benchmark_getStringToBytes(b *testing.B) {
+	for i := 0; i &lt; b.N; i++ {
+		getStringToBytes(testStr)
+	}
+}
+
+func Benchmark_BytesToString(b *testing.B) {
+	for i := 0; i &lt; b.N; i++ {
+		BytesToString(testBytes)
+	}
+}
+
+func Benchmark_getBytesToString(b *testing.B) {
+	for i := 0; i &lt; b.N; i++ {
+		getBytesToString(testBytes)
+	}
+}
+</code></pre>
+
+<h3 id="结果">结果</h3>
+
+<pre><code class="language-bash">执行：
+go test -v -run=none -bench=. -benchmem=true
+
+Benchmark_StringToBytes-8       1000000000               0.477 ns/op           0 B/op          0 allocs/op
+Benchmark_getStringToBytes-8    20491503                58.0 ns/op            64 B/op          1 allocs/op
+Benchmark_BytesToString-8       1000000000               0.473 ns/op           0 B/op          0 allocs/op
+Benchmark_getBytesToString-8    22655529                49.1 ns/op            64 B/op          1 allocs/op
+</code></pre>
+
+<p>可以看出，有明显的速度提升</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="http://localhost:1313/posts/go/goroutine/goroutines_and_channels/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="http://localhost:1313/posts/go/data_structures/sort/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=http://localhost:1313/js/navbutton.js></script>
+</html>

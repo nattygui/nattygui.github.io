@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Collections - nattygui的学习记录
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Collections 主要提供特别功能的容器来代替内置模块中dict/list/set/tuple collections模块主要函数 namedtuple deque ChainMap Counter OrderedDIct defaultdict UserDict UserDict UserString namedtuple 创建一个" />
+    <meta name="generator" content="Hugo 0.76.5 with theme pure" />
+    <title>Collections - nattygui的学习记录</title>
+    
+    
+    <link rel="stylesheet" href="https://github.com/nattygui/nattygui.github.io.git/css/style.min.c4bc7071f132c964c2116bca53b392933f377e5ca7b7051ed245187c621a2d3e.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Collections" />
+<meta property="og:description" content="Collections 主要提供特别功能的容器来代替内置模块中dict/list/set/tuple collections模块主要函数 namedtuple deque ChainMap Counter OrderedDIct defaultdict UserDict UserDict UserString namedtuple 创建一个" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://github.com/nattygui/nattygui.github.io.git/2019/10/collections/" />
+<meta property="article:published_time" content="2019-10-10T18:13:25+08:00" />
+<meta property="article:modified_time" content="2019-10-10T18:13:25+08:00" />
+<meta itemprop="name" content="Collections">
+<meta itemprop="description" content="Collections 主要提供特别功能的容器来代替内置模块中dict/list/set/tuple collections模块主要函数 namedtuple deque ChainMap Counter OrderedDIct defaultdict UserDict UserDict UserString namedtuple 创建一个">
+<meta itemprop="datePublished" content="2019-10-10T18:13:25+08:00" />
+<meta itemprop="dateModified" content="2019-10-10T18:13:25+08:00" />
+<meta itemprop="wordCount" content="1539">
+
+
+
+<meta itemprop="keywords" content="psl,Collections," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Collections"/>
+<meta name="twitter:description" content="Collections 主要提供特别功能的容器来代替内置模块中dict/list/set/tuple collections模块主要函数 namedtuple deque ChainMap Counter OrderedDIct defaultdict UserDict UserDict UserString namedtuple 创建一个"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="" target="_blank">
+            <img class="img-circle img-rotate" src="https://github.com/nattygui/nattygui.github.io.git/touxiang.png" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">nattygui</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">保持每日学习的态度!!!</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Wuhan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/nattygui/nattygui.github.io.git/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">主页</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/nattygui/nattygui.github.io.git/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">归档</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/nattygui/nattygui.github.io.git/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">分类</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/nattygui/nattygui.github.io.git/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">标签</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/centos7/" class="category-list-link">centos7</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/dbn/" class="category-list-link">dbn</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/docker/" class="category-list-link">docker</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/git/" class="category-list-link">git</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/github/" class="category-list-link">github</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/go/" class="category-list-link">go</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/python-standard-library/" class="category-list-link">python-standard-library</a><span class="category-list-count">4</span></li>
+            <li class="category-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/categories/pytorch/" class="category-list-link">pytorch</a><span class="category-list-count">1</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/beego/" class="tag-list-link">beego</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/centos7/" class="tag-list-link">centos7</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/collections/" class="tag-list-link">collections</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/dbn/" class="tag-list-link">dbn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/functions/" class="tag-list-link">functions</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/git/" class="tag-list-link">git</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/github/" class="tag-list-link">github</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/go/" class="tag-list-link">go</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/itertor-and-generator/" class="tag-list-link">itertor-and-generator</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/psl/" class="tag-list-link">psl</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://github.com/nattygui/nattygui.github.io.git/tags/pytorch/" class="tag-list-link">pytorch</a><span
+                    class="tag-list-count">1</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/09/querycommand/" class="title">centos7 中常用的查询命令</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/09/installredis/" class="title">Centos7 安装redis</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/09/privoxy/" class="title">Privoxy</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-09-04 09:27:54 &#43;0800 CST" itemprop="datePublished">2020-09-04</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/06/beegoinit/" class="title">beego安装与配置</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-06-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-06-22</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://github.com/nattygui/nattygui.github.io.git/2020/06/strbytesconv/" class="title">golang实现不分配额外内存[]byte和string转换</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-06-22 07:49:38 &#43;0800 CST" itemprop="datePublished">2020-06-22</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/nattygui/nattygui.github.io.git/2019/10/collections/"
+    >Collections</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://github.com/nattygui/nattygui.github.io.git/2019/10/collections/" class="article-date">
+  <time datetime="2019-10-10 18:13:25 &#43;0800 CST" itemprop="datePublished">2019-10-10</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/nattygui/nattygui.github.io.git/categories/python-standard-library/"> Python Standard Library </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/nattygui/nattygui.github.io.git/tags/psl/"> psl </a>
+    <a class="article-tag-link" href="/nattygui/nattygui.github.io.git/tags/collections/"> Collections </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/nattygui/nattygui.github.io.git/2019/10/collections/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1539字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="collections">Collections</h1>
+<p>主要提供特别功能的容器来代替内置模块中dict/list/set/tuple</p>
+<h2 id="collections模块主要函数">collections模块主要函数</h2>
+<ul>
+<li>namedtuple</li>
+<li>deque</li>
+<li>ChainMap</li>
+<li>Counter</li>
+<li>OrderedDIct</li>
+<li>defaultdict</li>
+<li>UserDict</li>
+<li>UserDict</li>
+<li>UserString</li>
+</ul>
+<h2 id="namedtuple">namedtuple</h2>
+<p>创建一个命名字段的元组工厂函数</p>
+<ul>
+<li>表达式：collections.namedtuple(typename, *field_names, verbose=False, rename=False, module=None)</li>
+<li>typename表示名称，其值会传给__repr__ 函数，当需要打印时，会显示。</li>
+<li>*field_names定义的名称字段集合，在实例化的数中，可通过intance.filed打印其值</li>
+<li>verbose若为True,这个类在建立的时候会将其打印出来，</li>
+<li>rename若为True,无效的名称字段会将其转化为正常字段。</li>
+<li>module若定义了，会自动给字段上名称</li>
+</ul>
+<p>返回一个含有类型名称的新元组子类</p>
+<pre><code class="language-python"># Basic example
+from collections import namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(11, 22)
+a = p[0] + p[1]
+b = p.x +  p.y  # 通过fieldname直接调用值
+print(a, ' ', b)
+# output: 33 33
+</code></pre>
+<hr>
+<ul>
+<li>
+<p>classmethod somenamedtuple._make(iterable)</p>
+</li>
+<li>
+<p>该方法会从iterable中直接传入值</p>
+</li>
+</ul>
+<pre><code class="language-python">from collections import namedtuple
+Point = namedtuple('Point', ['x, y'])
+t = [11, 22]
+a = Point._make(t)
+print(a)
+# output：Point(x=11, y=22)
+</code></pre>
+<hr>
+<ul>
+<li>
+<p>somenamedtuple._asdict()</p>
+</li>
+<li>
+<p>返回一个 OrderDict对象</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>somenamedtuple._replace(**kwarts)</p>
+</li>
+<li>
+<p>将传入键值对的值与对应的名称字段的值替换，返回一个新的实例</p>
+</li>
+</ul>
+<pre><code class="language-Python">...
+p = Point(11, 22)
+p._replace(x=33)
+# p = Point(x=33, y=22)
+</code></pre>
+<hr>
+<ul>
+<li>
+<p>somenamedtuple._fileds</p>
+</li>
+<li>
+<p>返回字段名称</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>namedtuple可以用来做子类</li>
+</ul>
+<pre><code class="language-Python">from collections import namedtuple
+class Point(namedtuple('Point', ['x', 'y'])):
+        # 通过—__slots__ 继承父类 namedtuple('Point', ['x', 'y'])(注意这是一个类)的__slots__属性，从而继承属性 x, y
+        __slots__ = ()
+        @property
+        def hypot(self):
+            return (self.x ** 2 + self.y ** 2) ** 0.5
+        def __str__(self):
+            return &quot;Point: x=%6.3f y=%6.3f hypot=%6.3f&quot; % (self.x, self.y, self.hypot)
+print(Point(3, 4))
+print(Point(14, 5/7))
+# output:
+# Point: x= 3.000  y= 4.000  hypot= 5.000
+# Point: x=14.000  y= 0.714  hypot=14.018
+</code></pre>
+<h2 id="deque">deque</h2>
+<p><em>deque</em> 是队列和栈合并。</p>
+<ul>
+<li>class collections.deque([iterable[, maxlen]])
+将传入参数iterable中的值从左到右进入到deque中，若iterable为空，则deque为空</li>
+</ul>
+<hr>
+<h3 id="支持的方法">支持的方法</h3>
+<ul>
+<li>append(x) 将x插入deque的右边</li>
+<li>appendleft(x) 将x插入deque的左边</li>
+<li>clear() 将deque中所有元素清除</li>
+<li>copy() 创建一个浅复制的deque</li>
+<li>count() 计算deque中所有元素的数量</li>
+<li>extend(iterable)　将集合插入到deque的右边</li>
+<li>extendleft(iterable) 将集合插入到deque的左边</li>
+<li>index(x, start, stop) 返回x在deque中索引位置。若传入start和stop参数则对该区间内进行搜索</li>
+<li>insert(i, x) 在deque索引位置i插入值x</li>
+<li>pop() 从最右边取出一个值，若没有元素，返回IndexError</li>
+<li>popleft() 从最左边取出一个值，若没有元素，返回IndexError</li>
+<li>remove(value) 清除第一个发现的值。若没有发现返回ValueError</li>
+<li>reverse() 返回反转后的deque</li>
+<li>rotate(n=1) 将deque向右移动n个元素，若n&lt;0 则向左移动n个元素</li>
+<li>maxlen() 返回容纳最大尺寸</li>
+</ul>
+<hr>
+<h2 id="counter">Counter</h2>
+<p>Counter用来快速和方便计算</p>
+<pre><code class="language-Python"># 使用counter来快速统计每个单词的数量
+from collections import Counter
+names = ['red', 'blue', 'red', 'green', 'blue', 'blue']
+cnt = Counter(names)
+print(cnt)
+# outut: Counter({'blue': 3, 'red': 2, 'green': 1})
+</code></pre>
+<h3 id="支持的方法-1">支持的方法</h3>
+<ul>
+<li>elements() 返回所有元素包括重复项的迭代器</li>
+</ul>
+<pre><code class="language-python">...
+print(sorted(cnt.elements()))
+# output: ['blue', 'blue', 'blue', 'green', 'red', 'red']
+</code></pre>
+<ul>
+<li>most_common(n) 返回一个包含每个键值对（转化成元组）前n组列表。</li>
+</ul>
+<pre><code class="language-Python">...
+print(cnt.most_common(2))
+# output: [('blue', 3), ('red', 2)]
+</code></pre>
+<ul>
+<li>支持加减运算</li>
+</ul>
+<pre><code class="language-Python">from collections import Counter
+c = Counter(a=1, b=2, c=3, d=4)
+d = Counter(a=0, b=1, c=2, d=3)
+print(c+d)
+print(c-d)
+print(c&amp;d)
+print(c|d)
+# output: Counter({'d': 7, 'c': 5, 'b': 3, 'a': 1})
+# Counter({'a': 1, 'b': 1, 'c': 1, 'd': 1})
+# Counter({'d': 3, 'c': 2, 'b': 1})
+# Counter({'d': 4, 'c': 3, 'b': 2, 'a': 1})
+</code></pre>
+<ul>
+<li>update(iterable) 增加iterable中的内容</li>
+</ul>
+<pre><code class="language-Python">from collections import Counter
+c = Counter(a=1, b=2, c=3, d=4)
+col =  ['red', 'blue', 'red', 'green', 'blue', 'blue']
+print(c)
+c.update(col)
+print(c)
+# Counter({'d': 4, 'c': 3, 'b': 2, 'a': 1})
+# Counter({'d': 4, 'c': 3, 'blue': 3, 'b': 2, 'red': 2, 'a': 1, 'green': 1})
+</code></pre>
+<h2 id="orderdict">orderDict</h2>
+<p>class collections.OrderDict([item])
+返回一个字典的子类，并且支持字典的方法。</p>
+<ul>
+<li>
+<p>popitem(last=True): 若last是True则采取后进先出的方法弹出一对键值对，若last是False则采取先进先出的方法弹出一对键值对</p>
+</li>
+<li>
+<p>move_to_end(key, last=True): 若last=True将该键移至最右方，若last=False将该键移至最左方</p>
+</li>
+<li>
+<p>OrderedDIct example</p>
+</li>
+</ul>
+<pre><code class="language-python">from collections import OrderedDict
+d = {'banana': 3, 'apple': 4, 'pear': 1, 'orange': 2}
+s = OrderedDict(sorted(d.items(),key=lambda x:x[0]))
+print(s)
+s1 = OrderedDict(sorted(d.items(),key=lambda x:x[1]))
+print(s1)
+s2 = OrderedDict(sorted(d.items(),key=lambda x:len(x[0])))
+print(s2)
+# OrderedDict([('apple', 4), ('banana', 3), ('orange', 2), ('pear', 1)])
+# OrderedDict([('pear', 1), ('orange', 2), ('banana', 3), ('apple', 4)])
+# OrderedDict([('pear', 1), ('apple', 4), ('banana', 3), ('orange', 2)])
+</code></pre>
+<h2 id="defaultdict">defaultdict</h2>
+<p>class collecitons.defaultdict([default_factory]):default_factory可以为list，tuple 等序列，返回一个类字典对象</p>
+<pre><code class="language-Python">from collections import defaultdict
+s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+l = defaultdict(list)
+se = defaultdict(set)
+for k,v in s:
+    l[k].append(v)
+    se[k].add(v)
+print(l)
+print(se)
+# defaultdict(&lt;class 'list'&gt;, {'yellow': [1, 3], 'blue': [2, 4], 'red': [1]})
+# defaultdict(&lt;class 'set'&gt;, {'yellow': {1, 3}, 'blue': {2, 4}, 'red': {1}})
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://github.com/nattygui/nattygui.github.io.git/2019/10/%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" title="迭代器与生成器"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://github.com/nattygui/nattygui.github.io.git/2019/10/functools/"
+                    title="Functools"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+</ul>
+  
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/go.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://github.com/nattygui/nattygui.github.io.git/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://github.com/nattygui/nattygui.github.io.git/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/github.com\/nattygui\/nattygui.github.io.git',
+            CONTENT_URL: 'https:\/\/github.com\/nattygui\/nattygui.github.io.git\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://github.com/nattygui/nattygui.github.io.git/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

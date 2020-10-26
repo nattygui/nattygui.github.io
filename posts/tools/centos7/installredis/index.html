@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="nattygui">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=http://localhost:1313/css/syntax.css>
+    <link rel="stylesheet" href=http://localhost:1313/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>title</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=http://localhost:1313><img src="http://localhost:1313/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=http://localhost:1313>
+        
+            title
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/blog/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/yourgithubusername23434"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <div class="spacer"></div>
+    
+      
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#centos7-安装redis">Centos7 安装redis</a>
+<ul>
+<li><a href="#1-检查是否有redis-yum-源">1、 检查是否有redis yum 源</a></li>
+<li><a href="#2-安装-epel-仓库">2、安装 epel 仓库</a></li>
+<li><a href="#3-安装redis-数据库">3、 安装redis 数据库</a></li>
+<li><a href="#4-启动redis服务">4、 启动redis服务</a></li>
+<li><a href="#5-进入-redis-客户端">5、进入 redis 客户端</a></li>
+</ul></li>
+</ul>
+</nav>
+    
+
+<h1 id="centos7-安装redis">Centos7 安装redis</h1>
+
+<h2 id="1-检查是否有redis-yum-源">1、 检查是否有redis yum 源</h2>
+
+<p>若没有执行下一步，若有执行第三步</p>
+
+<pre><code class="language-bash">yum search redis
+
+yum info redis
+</code></pre>
+
+<h2 id="2-安装-epel-仓库">2、安装 epel 仓库</h2>
+
+<pre><code class="language-bash">yum install -y epel-release 
+</code></pre>
+
+<h2 id="3-安装redis-数据库">3、 安装redis 数据库</h2>
+
+<pre><code class="language-bash">yum info redis
+
+yum install -y redis
+</code></pre>
+
+<h2 id="4-启动redis服务">4、 启动redis服务</h2>
+
+<pre><code class="language-bash">systemctl start redis
+
+systemctl enable redis # 设置开机启动
+</code></pre>
+
+<h2 id="5-进入-redis-客户端">5、进入 redis 客户端</h2>
+
+<pre><code class="language-bash">[admin@localhost ~]$ redis-cli
+127.0.0.1:6379&gt; 
+</code></pre>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="http://localhost:1313/posts/tools/centos7/privoxy/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="http://localhost:1313/posts/go/goroutine/goroutines_and_channels/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=http://localhost:1313/js/navbutton.js></script>
+</html>

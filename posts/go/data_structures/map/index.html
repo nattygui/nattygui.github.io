@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="nattygui">
+    <meta name="keywords" content="hugo blog">
+    <link rel="stylesheet" href=http://localhost:1313/css/syntax.css>
+    <link rel="stylesheet" href=http://localhost:1313/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>title</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=http://localhost:1313><img src="http://localhost:1313/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=http://localhost:1313>
+        
+            title
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/blog/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/yourgithubusername23434"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <div class="spacer"></div>
+    
+      
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#golang-数据结构之map">golang 数据结构之map</a>
+<ul>
+<li><a href="#介绍">介绍</a></li>
+<li><a href="#定义和声明">定义和声明</a></li>
+<li><a href="#map的使用">map的使用</a></li>
+<li><a href="#遍历map">遍历map</a></li>
+</ul></li>
+</ul>
+</nav>
+    
+
+<h1 id="golang-数据结构之map">golang 数据结构之map</h1>
+
+<h2 id="介绍">介绍</h2>
+
+<p>map是hash table数据结构，它支持快速的查找、增加和删除。</p>
+
+<h2 id="定义和声明">定义和声明</h2>
+
+<pre><code class="language-go">map[keyType]ValueType
+</code></pre>
+
+<p>其中 keyType 必须是<a href="https://golang.org/ref/spec#Comparison_operators">可比较的数据类型</a> (golang官网说明)，比如 布尔类型（bool）、数值类型（int, uint, float等)、string、指针（pointer）、通道（channel）、接口（interface）或者包含以上基础类型的 struct、arrays。
+但是不支持 切片（slices)、map、函数（function）。</p>
+
+<p>valueType 支持任何数据类型</p>
+
+<p>这样定义一个map，maps的值为nil，必须重新进行赋值才能够访问，若直接进行访问，会导致runtime panic。</p>
+
+<pre><code class="language-go">var maps map[int]int
+</code></pre>
+
+<p>建议通过make定义一个map，这样在创建的时候make会分配和初始化一个hash map数据结构。</p>
+
+<pre><code class="language-go">maps := make(map[int]int)
+</code></pre>
+
+<h2 id="map的使用">map的使用</h2>
+
+<p>map支持存在与不存在的key值进行访问，若key值存在返回，相应的value；若不存在返回valueType的零值</p>
+
+<pre><code class="language-go">maps := make(map[int]int)
+maps[1] = 2
+maps[3] = 4
+
+s1 := maps[1] // s1 == 1
+s2 := maps[2] //s1 == 2
+</code></pre>
+
+<p>支持判断是否当前key值存在</p>
+
+<pre><code class="language-go">s3, ok := maps[3] // s3 == 4, ok == true
+s4, ok := maps[4] // s4 == 0, ok == false
+</code></pre>
+
+<h2 id="遍历map">遍历map</h2>
+
+<p>通过range函数来遍历map，支持俩种遍历方式, 且都是无序遍历的。</p>
+
+<ol>
+<li><p>只获取key值</p>
+
+<pre><code class="language-go">for k := range maps {
+// 使用k
+}
+</code></pre></li>
+
+<li><p>获取kv值</p>
+
+<pre><code class="language-go">for k, v := range maps {
+// 使用 k，v
+}
+</code></pre></li>
+
+<li><p>有序的遍历map</p>
+
+<pre><code class="language-go">import &quot;sort&quot;
+
+var maps map[int]int
+var keys []int
+for k := range maps {
+keys = append(keys, k)
+}
+sort.Ints(keys)
+for _, k := range keys {
+fmt.Println(&quot;Key:&quot;, k, &quot;Value:&quot;, maps[k])
+}
+</code></pre></li>
+</ol>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="http://localhost:1313/posts/go/data_structures/sort/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=http://localhost:1313/js/navbutton.js></script>
+</html>
